@@ -25,6 +25,41 @@
         "alt": "Pro Start Competition at the Chase Center - Event Photography",
         "width": 1200,
         "height": 800
+      },
+      {
+        "id": "1-4",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg",
+        "alt": "Pro Start Competition at the Chase Center - Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "1-5",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg",
+        "alt": "Pro Start Competition at the Chase Center - Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "1-6",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg",
+        "alt": "Pro Start Competition at the Chase Center - Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "1-7",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg",
+        "alt": "Pro Start Competition at the Chase Center - Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "1-8",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg",
+        "alt": "Pro Start Competition at the Chase Center - Event Photography",
+        "width": 1200,
+        "height": 800
       }
     ],
     "featured": true,
@@ -33,19 +68,44 @@
   },
   {
     "id": 2,
-    "title": "Through the Lens: Advertising Photography",
-    "description": "Professional commercial photography showcasing brand storytelling",
-    "category": "commercial",
+    "title": "Capturing Moments: Philadelphia Event Photography",
+    "description": "A glimpse into the world of Philadelphia event photography, capturing the energy and excitement of local events",
+    "category": "event",
     "images": [
       {
         "id": "2-1",
+        "src": "/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg",
+        "alt": "Capturing Moments - Philadelphia Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "2-2",
+        "src": "/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_02.jpg",
+        "alt": "Capturing Moments - Philadelphia Event Photography",
+        "width": 1200,
+        "height": 800
+      }
+    ],
+    "featured": true,
+    "createdAt": "2025-01-26T02:00:00.000Z",
+    "updatedAt": "2025-01-26T02:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Through the Lens: Advertising Photography",
+    "description": "Professional commercial photography showcasing brand storytelling and visual communication",
+    "category": "commercial",
+    "images": [
+      {
+        "id": "3-1",
         "src": "/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg",
         "alt": "Through the Lens: Advertising Photography",
         "width": 1200,
         "height": 800
       },
       {
-        "id": "2-2",
+        "id": "3-2",
         "src": "/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg",
         "alt": "Through the Lens: Advertising Photography",
         "width": 1200,
@@ -57,20 +117,20 @@
     "updatedAt": "2025-01-26T02:00:00.000Z"
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Picture Perfect Branding",
-    "description": "Professional headshots and branding photography for Philadelphia businesses",
+    "description": "Professional headshots and branding photography for Philadelphia businesses and professionals",
     "category": "portrait",
     "images": [
       {
-        "id": "3-1",
+        "id": "4-1",
         "src": "/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg",
         "alt": "Picture Perfect Branding - Professional Headshots",
         "width": 1200,
         "height": 800
       },
       {
-        "id": "3-2",
+        "id": "4-2",
         "src": "/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg",
         "alt": "Picture Perfect Branding - Professional Headshots",
         "width": 1200,
@@ -78,6 +138,52 @@
       }
     ],
     "featured": true,
+    "createdAt": "2025-01-26T02:00:00.000Z",
+    "updatedAt": "2025-01-26T02:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Philadelphia Corporate Events",
+    "description": "Professional event photography for Philadelphia businesses, conferences, and corporate gatherings",
+    "category": "event",
+    "images": [
+      {
+        "id": "5-1",
+        "src": "/images/hero/hero_1.jpg",
+        "alt": "Philadelphia Corporate Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "5-2",
+        "src": "/images/hero/hero_2.jpg",
+        "alt": "Philadelphia Corporate Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "5-3",
+        "src": "/images/hero/hero_3.jpg",
+        "alt": "Philadelphia Corporate Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "5-4",
+        "src": "/images/hero/hero_4.jpg",
+        "alt": "Philadelphia Corporate Event Photography",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "5-5",
+        "src": "/images/hero/hero_5.jpg",
+        "alt": "Philadelphia Corporate Event Photography",
+        "width": 1200,
+        "height": 800
+      }
+    ],
+    "featured": false,
     "createdAt": "2025-01-26T02:00:00.000Z",
     "updatedAt": "2025-01-26T02:00:00.000Z"
   }
