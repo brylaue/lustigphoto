@@ -94,7 +94,7 @@
         // Load galleries from JSON
         async function loadGalleries() {
             try {
-                const response = await fetch('/data/galleries.json');
+                const response = await fetch('./data/galleries.json');
                 galleries = await response.json();
                 displayGalleries();
             } catch (error) {
