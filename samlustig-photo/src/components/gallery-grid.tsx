@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-import { galleries, getGalleriesByCategory } from '@/data/galleries'
+import { getGalleriesByCategory } from '@/data/galleries'
 
 export default function GalleryGrid() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeCategory] = useState('all')
 
   const filteredGalleries = getGalleriesByCategory(activeCategory)
 

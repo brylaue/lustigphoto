@@ -36,7 +36,6 @@ const initialGalleries = [
 export default function Admin() {
   const [galleries, setGalleries] = useState(initialGalleries)
   const [isAddingNew, setIsAddingNew] = useState(false)
-  const [editingId, setEditingId] = useState<number | null>(null)
   const [newGallery, setNewGallery] = useState({
     title: '',
     category: 'event',
@@ -59,13 +58,10 @@ export default function Admin() {
   }
 
   const handleEditGallery = (id: number) => {
-    setEditingId(id)
+    // Edit functionality would go here
+    console.log('Edit gallery:', id)
   }
 
-  const handleSaveEdit = (id: number, updatedGallery: Record<string, unknown>) => {
-    setGalleries(galleries.map(g => g.id === id ? { ...g, ...updatedGallery } : g))
-    setEditingId(null)
-  }
 
   const handleDeleteGallery = (id: number) => {
     setGalleries(galleries.filter(g => g.id !== id))
