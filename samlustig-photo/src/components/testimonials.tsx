@@ -60,7 +60,7 @@ export default function Testimonials() {
                 <figure className="rounded-2xl bg-gray-50 dark:bg-gray-800 p-8 text-sm leading-6">
                   <Quote className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                   <blockquote className="text-gray-900 dark:text-white">
-                    <p>"{testimonial.body}"</p>
+                    <p>&ldquo;{testimonial.body}&rdquo;</p>
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-x-4">
                     <div className="flex items-center">
