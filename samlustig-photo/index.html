@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philadelphia Event Photography & Headshots | Sam Lustig Photo</title>
+    <!-- Updated: All 26 scraped images now included -->
     <meta name="description" content="Professional event photography and headshot services in Philadelphia, PA. Specializing in corporate events, weddings, and professional portraits throughout the Greater Philadelphia Area.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -249,7 +250,7 @@
         // Load galleries from JSON
         async function loadGalleries() {
             try {
-                const response = await fetch('./data/galleries.json');
+                const response = await fetch('./data/galleries.json?v=' + Date.now());
                 const galleries = await response.json();
                 displayGalleries(galleries);
             } catch (error) {
@@ -343,6 +344,7 @@
         }
 
         function displayGalleries(galleries) {
+            console.log('Displaying galleries:', galleries);
             const grid = document.getElementById('gallery-grid');
             grid.innerHTML = galleries.map(gallery => `
                 <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
