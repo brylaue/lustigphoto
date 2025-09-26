@@ -22,7 +22,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
           >
-            Philadelphia's premier event photographer specializing in corporate events, professional headshots, and weddings throughout the Greater Philadelphia Area.
+                Philadelphia&apos;s premier event photographer specializing in corporate events, professional headshots, and weddings throughout the Greater Philadelphia Area.
           </motion.p>
         </div>
 
@@ -41,15 +41,15 @@ export default function About() {
                 My Story
               </h2>
               <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-                With over 8 years of experience in professional photography, I've had the privilege of capturing 
+                With over 8 years of experience in professional photography, I&apos;ve had the privilege of capturing 
                 countless special moments throughout Philadelphia and the surrounding areas. My journey began with 
                 a passion for storytelling through images, and it has evolved into a specialized focus on event 
                 photography and professional headshots.
               </p>
               <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                 Based in Philadelphia, I understand the unique character and energy of this city. From the 
-                historic streets of Old City to the modern skyscrapers of Center City, I've photographed 
-                events at some of Philadelphia's most iconic venues including the Philadelphia Museum of Art, 
+                historic streets of Old City to the modern skyscrapers of Center City, I&apos;ve photographed 
+                events at some of Philadelphia&apos;s most iconic venues including the Philadelphia Museum of Art, 
                 Union League, and the Pennsylvania Convention Center.
               </p>
             </motion.div>
@@ -164,16 +164,16 @@ export default function About() {
               My Photography Philosophy
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              I believe that great photography is about more than just capturing moments—it's about telling stories. 
-              Whether I'm photographing a corporate event at the Philadelphia Convention Center or taking professional 
+              I believe that great photography is about more than just capturing moments—it&apos;s about telling stories. 
+              Whether I&apos;m photographing a corporate event at the Philadelphia Convention Center or taking professional 
               headshots in Center City, my goal is to create images that not only look beautiful but also convey the 
               emotion and energy of the moment.
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
               My approach is professional yet personable, ensuring that every client feels comfortable and confident 
               throughout our session. I take pride in delivering exceptional results that exceed expectations, whether 
-              you're a Philadelphia business looking for corporate event photography or a couple planning your dream 
-              wedding at one of the city's iconic venues.
+              you&apos;re a Philadelphia business looking for corporate event photography or a couple planning your dream 
+              wedding at one of the city&apos;s iconic venues.
             </p>
           </motion.div>
         </div>

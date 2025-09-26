@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Plus, Edit, Trash2, Upload, Save } from 'lucide-react'
+import Image from 'next/image'
+import { Plus, Edit, Trash2, Save } from 'lucide-react'
 
 // Mock data for galleries
 const initialGalleries = [
@@ -61,7 +62,7 @@ export default function Admin() {
     setEditingId(id)
   }
 
-  const handleSaveEdit = (id: number, updatedGallery: any) => {
+  const handleSaveEdit = (id: number, updatedGallery: Record<string, unknown>) => {
     setGalleries(galleries.map(g => g.id === id ? { ...g, ...updatedGallery } : g))
     setEditingId(null)
   }
@@ -183,9 +184,11 @@ export default function Admin() {
               className="rounded-lg bg-white dark:bg-gray-800 shadow overflow-hidden"
             >
               <div className="aspect-w-16 aspect-h-9">
-                <img
+                <Image
                   src={gallery.image}
                   alt={gallery.title}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover"
                 />
               </div>

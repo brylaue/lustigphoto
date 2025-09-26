@@ -31,6 +31,30 @@ const nextConfig = {
       },
     ]
   },
+  // Enable static export for platforms that need it
+  output: process.env.NODE_ENV === 'production' && process.env.STATIC_EXPORT === 'true' ? 'export' : undefined,
+  trailingSlash: process.env.STATIC_EXPORT === 'true',
+  // Disable image optimization for static export
+  images: process.env.STATIC_EXPORT === 'true' ? {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  } : {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig

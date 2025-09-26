@@ -5,7 +5,7 @@ import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    body: 'Sam\'s event photography at our Philadelphia conference was exceptional. He captured every important moment and delivered professional results that exceeded our expectations.',
+    body: 'Sam&apos;s event photography at our Philadelphia conference was exceptional. He captured every important moment and delivered professional results that exceeded our expectations.',
     author: {
       name: 'Sarah Mitchell',
       handle: 'Event Coordinator, Philadelphia Convention Center',

@@ -53,21 +53,60 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deployment
+## 🚀 Deployment
 
-### Vercel (Recommended)
+### Quick Deploy (One-Click)
 
-1. Push your code to GitHub
-2. Connect your repository to Vercel
-3. Deploy automatically
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/samlustig-photo)
 
-### Other Platforms
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/yourusername/samlustig-photo)
 
-The app can be deployed to any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- DigitalOcean App Platform
-- Railway
+### Manual Deployment
+
+#### Vercel (Recommended)
+```bash
+npm i -g vercel
+vercel --prod
+```
+
+#### Netlify
+```bash
+npm i -g netlify-cli
+npm run build
+netlify deploy --prod --dir=.next
+```
+
+#### Docker
+```bash
+docker build -t samlustig-photo .
+docker run -p 3000:3000 samlustig-photo
+```
+
+#### Static Export
+```bash
+npm run build:static
+# Deploy 'out' directory to any static host
+```
+
+### Supported Platforms
+- ✅ Vercel (Recommended)
+- ✅ Netlify
+- ✅ AWS Amplify
+- ✅ DigitalOcean App Platform
+- ✅ Railway
+- ✅ Heroku
+- ✅ Docker (Any container platform)
+- ✅ Static hosting (GitHub Pages, S3, etc.)
+
+### Deployment Scripts
+```bash
+npm run deploy:vercel    # Deploy to Vercel
+npm run deploy:netlify   # Deploy to Netlify
+npm run deploy:docker    # Deploy with Docker
+npm run deploy:static    # Build static site
+```
+
+📋 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions
 
 ## Admin Interface
 

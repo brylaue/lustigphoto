@@ -27,7 +27,7 @@ export default function Hero() {
           </motion.div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            Philadelphia's Premier
+            Philadelphia&apos;s Premier
             <span className="block text-blue-400">Event Photographer</span>
           </h1>
           

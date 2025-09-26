@@ -47,7 +47,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300"
           >
-            Ready to capture your next event or professional headshots in Philadelphia? Let's discuss your photography needs.
+            Ready to capture your next event or professional headshots in Philadelphia? Let&apos;s discuss your photography needs.
           </motion.p>
         </div>
 
@@ -64,9 +64,9 @@ export default function Contact() {
               Get in Touch
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-              I'm based in Philadelphia and serve clients throughout the Greater Philadelphia Area. 
+              I&apos;m based in Philadelphia and serve clients throughout the Greater Philadelphia Area. 
               Whether you need corporate event photography, professional headshots, or wedding photography, 
-              I'd love to hear about your project.
+              I&apos;d love to hear about your project.
             </p>
             
             <div className="mt-10 space-y-6">
