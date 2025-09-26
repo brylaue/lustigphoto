@@ -5,97 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-// Philadelphia photography galleries with real images
-const galleries = [
-  {
-    id: 1,
-    title: 'Philadelphia Convention Center Event',
-    category: 'event',
-    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'philadelphia-convention-center-event'
-  },
-  {
-    id: 2,
-    title: 'Executive Headshots - Center City',
-    category: 'portrait',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'executive-headshots-center-city'
-  },
-  {
-    id: 3,
-    title: 'Philadelphia Museum of Art Wedding',
-    category: 'wedding',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'philadelphia-museum-art-wedding'
-  },
-  {
-    id: 4,
-    title: 'Corporate Conference - Rittenhouse Square',
-    category: 'event',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'corporate-conference-rittenhouse-square'
-  },
-  {
-    id: 5,
-    title: 'Professional Headshots - Old City',
-    category: 'portrait',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'professional-headshots-old-city'
-  },
-  {
-    id: 6,
-    title: 'Philadelphia Business Event',
-    category: 'event',
-    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'philadelphia-business-event'
-  },
-  {
-    id: 7,
-    title: 'Liberty Bell Wedding Ceremony',
-    category: 'wedding',
-    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'liberty-bell-wedding-ceremony'
-  },
-  {
-    id: 8,
-    title: 'Philadelphia Law Firm Headshots',
-    category: 'portrait',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'philadelphia-law-firm-headshots'
-  },
-  {
-    id: 9,
-    title: 'Trade Show - Pennsylvania Convention Center',
-    category: 'event',
-    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'trade-show-pennsylvania-convention-center'
-  },
-  {
-    id: 10,
-    title: 'Philadelphia City Hall Wedding',
-    category: 'wedding',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'philadelphia-city-hall-wedding'
-  },
-  {
-    id: 11,
-    title: 'Corporate Gala - Union League',
-    category: 'event',
-    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'corporate-gala-union-league'
-  },
-  {
-    id: 12,
-    title: 'Executive Portraits - Comcast Center',
-    category: 'portrait',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    slug: 'executive-portraits-comcast-center'
-  }
-]
+import { galleries, getGalleriesByCategory } from '@/data/galleries'
 
 export default function GalleryGrid() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [activeCategory, setActiveCategory] = useState('all')
+
+  const filteredGalleries = getGalleriesByCategory(activeCategory)
 
   const openLightbox = (index: number) => {
     setCurrentImageIndex(index)
@@ -107,17 +24,17 @@ export default function GalleryGrid() {
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % galleries.length)
+    setCurrentImageIndex((prev) => (prev + 1) % filteredGalleries.length)
   }
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + galleries.length) % galleries.length)
+    setCurrentImageIndex((prev) => (prev - 1 + filteredGalleries.length) % filteredGalleries.length)
   }
 
   return (
     <>
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {galleries.map((gallery, index) => (
+        {filteredGalleries.map((gallery, index) => (
           <motion.div
             key={gallery.id}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -128,8 +45,8 @@ export default function GalleryGrid() {
           >
             <div className="aspect-[4/3] w-full overflow-hidden">
               <Image
-                src={gallery.image}
-                alt={gallery.title}
+                src={gallery.images[0]?.src || '/images/placeholder.jpg'}
+                alt={gallery.images[0]?.alt || gallery.title}
                 width={600}
                 height={450}
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -171,16 +88,16 @@ export default function GalleryGrid() {
               
               <div className="relative">
                 <Image
-                  src={galleries[currentImageIndex].image}
-                  alt={galleries[currentImageIndex].title}
+                  src={filteredGalleries[currentImageIndex].images[0]?.src || '/images/placeholder.jpg'}
+                  alt={filteredGalleries[currentImageIndex].images[0]?.alt || filteredGalleries[currentImageIndex].title}
                   width={1200}
                   height={800}
                   className="max-h-[80vh] w-auto object-contain"
                 />
                 
                 <div className="mt-4 text-center text-white">
-                  <h3 className="text-xl font-semibold">{galleries[currentImageIndex].title}</h3>
-                  <p className="text-sm opacity-90 capitalize">{galleries[currentImageIndex].category}</p>
+                  <h3 className="text-xl font-semibold">{filteredGalleries[currentImageIndex].title}</h3>
+                  <p className="text-sm opacity-90 capitalize">{filteredGalleries[currentImageIndex].category}</p>
                 </div>
               </div>
               

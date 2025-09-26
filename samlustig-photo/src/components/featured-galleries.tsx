@@ -5,35 +5,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Eye } from 'lucide-react'
 
-// Featured galleries showcasing Philadelphia work
-const featuredGalleries = [
-  {
-    id: 1,
-    title: 'Philadelphia Corporate Events',
-    description: 'Professional event photography at Philadelphia\'s premier venues',
-    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    imageCount: 45,
-    slug: 'philadelphia-corporate-events'
-  },
-  {
-    id: 2,
-    title: 'Professional Headshots',
-    description: 'Executive and professional headshots in Philadelphia',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    imageCount: 32,
-    slug: 'professional-headshots-philadelphia'
-  },
-  {
-    id: 3,
-    title: 'Philadelphia Weddings',
-    description: 'Wedding photography at iconic Philadelphia locations',
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    imageCount: 28,
-    slug: 'philadelphia-weddings'
-  }
-]
+import { getFeaturedGalleries } from '@/data/galleries'
 
 export default function FeaturedGalleries() {
+  const featuredGalleries = getFeaturedGalleries()
+
   return (
     <section className="py-24 sm:py-32 bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -64,8 +40,8 @@ export default function FeaturedGalleries() {
             >
               <div className="aspect-[16/10] w-full overflow-hidden">
                 <Image
-                  src={gallery.image}
-                  alt={gallery.title}
+                  src={gallery.images[0]?.src || '/images/placeholder.jpg'}
+                  alt={gallery.images[0]?.alt || gallery.title}
                   width={600}
                   height={400}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
@@ -73,7 +49,7 @@ export default function FeaturedGalleries() {
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex items-center space-x-2 text-white">
                     <Eye className="h-5 w-5" />
-                    <span className="text-sm font-medium">{gallery.imageCount} photos</span>
+                    <span className="text-sm font-medium">{gallery.images.length} photos</span>
                   </div>
                 </div>
               </div>
