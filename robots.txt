@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://samlustigphoto.com/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin.html

@@ -1,0 +1,21 @@
+{
+  "name": "sam-lustig-photography",
+  "version": "1.0.0",
+  "description": "Professional photography website for Sam Lustig Photography in Philadelphia",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "photography",
+    "philadelphia",
+    "event photography",
+    "headshots",
+    "wedding photography",
+    "professional photographer"
+  ],
+  "author": "Sam Lustig",
+  "license": "MIT"
+}
