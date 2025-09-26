@@ -154,8 +154,10 @@ class ImageDownloader:
         for page in scraped_data['pages']:
             for img in page['images']:
                 # Check if image might be a hero image
-                if (img.get('width', 0) > 1000 or 
-                    img.get('height', 0) > 600 or
+                width = int(img.get('width', 0)) if str(img.get('width', 0)).isdigit() else 0
+                height = int(img.get('height', 0)) if str(img.get('height', 0)).isdigit() else 0
+                if (width > 1000 or 
+                    height > 600 or
                     'hero' in img.get('class', []) or
                     'background' in img.get('class', [])):
                     hero_candidates.append(img)

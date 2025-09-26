@@ -40,8 +40,9 @@ class WixScraper:
             self.scraped_data['site_info'] = homepage_data['site_info']
             self.scraped_data['pages'].append(homepage_data)
             
-            # Extract navigation links
-            nav_links = self.extract_navigation_links(homepage_data['soup'])
+            # Extract navigation links from homepage
+            homepage_soup = BeautifulSoup(requests.get(self.base_url).content, 'html.parser')
+            nav_links = self.extract_navigation_links(homepage_soup)
             print(f"🔗 Found {len(nav_links)} navigation links")
             
             # Scrape additional pages
@@ -88,8 +89,7 @@ class WixScraper:
                 'headings': self.extract_headings(soup),
                 'text_content': self.extract_text_content(soup),
                 'images': self.extract_page_images(soup, url),
-                'links': self.extract_links(soup, url),
-                'soup': soup
+                'links': self.extract_links(soup, url)
             }
             
             # Extract site info from homepage
@@ -232,7 +232,9 @@ class WixScraper:
         galleries = []
         
         for page in self.scraped_data['pages']:
-            soup = page['soup']
+            # Re-parse the page for gallery extraction
+            response = requests.get(page['url'])
+            soup = BeautifulSoup(response.content, 'html.parser')
             
             # Look for gallery patterns
             gallery_selectors = [
