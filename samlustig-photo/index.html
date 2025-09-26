@@ -249,7 +249,7 @@
         // Load galleries from JSON
         async function loadGalleries() {
             try {
-                const response = await fetch('../data/galleries.json');
+                const response = await fetch('./data/galleries.json');
                 const galleries = await response.json();
                 displayGalleries(galleries);
             } catch (error) {
@@ -262,7 +262,7 @@
                         description: "Event photography at Philadelphia's premier venue",
                         category: "event",
                         images: [
-                            { src: "./images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg", alt: "Event photography" }
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg", alt: "Event photography" }
                         ]
                     },
                     {
@@ -271,7 +271,7 @@
                         description: "Professional commercial photography",
                         category: "commercial",
                         images: [
-                            { src: "./images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg", alt: "Commercial photography" }
+                            { src: "/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg", alt: "Commercial photography" }
                         ]
                     },
                     {
@@ -280,7 +280,7 @@
                         description: "Professional headshots and branding",
                         category: "portrait",
                         images: [
-                            { src: "./images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg", alt: "Professional headshots" }
+                            { src: "/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg", alt: "Professional headshots" }
                         ]
                     }
                 ]);

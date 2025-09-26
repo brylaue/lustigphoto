@@ -7,21 +7,21 @@
     "images": [
       {
         "id": "1-1",
-        "src": "./images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg",
         "alt": "Pro Start Competition at the Chase Center - Event Photography",
         "width": 1200,
         "height": 800
       },
       {
         "id": "1-2",
-        "src": "./images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg",
         "alt": "Pro Start Competition at the Chase Center - Event Photography",
         "width": 1200,
         "height": 800
       },
       {
         "id": "1-3",
-        "src": "./images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg",
+        "src": "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg",
         "alt": "Pro Start Competition at the Chase Center - Event Photography",
         "width": 1200,
         "height": 800
@@ -39,14 +39,14 @@
     "images": [
       {
         "id": "2-1",
-        "src": "./images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg",
+        "src": "/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg",
         "alt": "Through the Lens: Advertising Photography",
         "width": 1200,
         "height": 800
       },
       {
         "id": "2-2",
-        "src": "./images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg",
+        "src": "/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg",
         "alt": "Through the Lens: Advertising Photography",
         "width": 1200,
         "height": 800
@@ -64,14 +64,14 @@
     "images": [
       {
         "id": "3-1",
-        "src": "./images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg",
+        "src": "/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg",
         "alt": "Picture Perfect Branding - Professional Headshots",
         "width": 1200,
         "height": 800
       },
       {
         "id": "3-2",
-        "src": "./images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg",
+        "src": "/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg",
         "alt": "Picture Perfect Branding - Professional Headshots",
         "width": 1200,
         "height": 800
