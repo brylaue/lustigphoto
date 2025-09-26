@@ -186,5 +186,76 @@
     "featured": false,
     "createdAt": "2025-01-26T02:00:00.000Z",
     "updatedAt": "2025-01-26T02:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "title": "Commercial Photography Portfolio",
+    "description": "Professional commercial and advertising photography showcasing brand storytelling",
+    "category": "commercial",
+    "images": [
+      {
+        "id": "6-1",
+        "src": "/images/thumbnails/commercial/thumb_through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg",
+        "alt": "Commercial Photography Portfolio",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "6-2",
+        "src": "/images/thumbnails/commercial/thumb_through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg",
+        "alt": "Commercial Photography Portfolio",
+        "width": 1200,
+        "height": 800
+      }
+    ],
+    "featured": false,
+    "createdAt": "2025-01-26T02:00:00.000Z",
+    "updatedAt": "2025-01-26T02:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "title": "Event Photography Highlights",
+    "description": "Curated highlights from Philadelphia event photography sessions",
+    "category": "event",
+    "images": [
+      {
+        "id": "7-1",
+        "src": "/images/thumbnails/thumb_hero_1.jpg",
+        "alt": "Event Photography Highlights",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "7-2",
+        "src": "/images/thumbnails/thumb_hero_2.jpg",
+        "alt": "Event Photography Highlights",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "7-3",
+        "src": "/images/thumbnails/thumb_hero_3.jpg",
+        "alt": "Event Photography Highlights",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "7-4",
+        "src": "/images/thumbnails/thumb_hero_4.jpg",
+        "alt": "Event Photography Highlights",
+        "width": 1200,
+        "height": 800
+      },
+      {
+        "id": "7-5",
+        "src": "/images/thumbnails/thumb_hero_5.jpg",
+        "alt": "Event Photography Highlights",
+        "width": 1200,
+        "height": 800
+      }
+    ],
+    "featured": false,
+    "createdAt": "2025-01-26T02:00:00.000Z",
+    "updatedAt": "2025-01-26T02:00:00.000Z"
   }
 ]

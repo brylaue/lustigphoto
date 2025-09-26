@@ -254,7 +254,7 @@
                 displayGalleries(galleries);
             } catch (error) {
                 console.error('Error loading galleries:', error);
-                // Fallback to static galleries
+                // Fallback to static galleries - ALL IMAGES INCLUDED
                 displayGalleries([
                     {
                         id: 1,
@@ -264,7 +264,12 @@
                         images: [
                             { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg", alt: "Event photography" },
                             { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg", alt: "Event photography" },
-                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg", alt: "Event photography" }
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg", alt: "Event photography" },
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg", alt: "Event photography" },
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg", alt: "Event photography" },
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg", alt: "Event photography" },
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg", alt: "Event photography" },
+                            { src: "/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg", alt: "Event photography" }
                         ]
                     },
                     {
@@ -305,7 +310,32 @@
                         images: [
                             { src: "/images/hero/hero_1.jpg", alt: "Philadelphia corporate event" },
                             { src: "/images/hero/hero_2.jpg", alt: "Philadelphia corporate event" },
-                            { src: "/images/hero/hero_3.jpg", alt: "Philadelphia corporate event" }
+                            { src: "/images/hero/hero_3.jpg", alt: "Philadelphia corporate event" },
+                            { src: "/images/hero/hero_4.jpg", alt: "Philadelphia corporate event" },
+                            { src: "/images/hero/hero_5.jpg", alt: "Philadelphia corporate event" }
+                        ]
+                    },
+                    {
+                        id: 6,
+                        title: "Commercial Photography Portfolio",
+                        description: "Professional commercial and advertising photography",
+                        category: "commercial",
+                        images: [
+                            { src: "/images/thumbnails/commercial/thumb_through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg", alt: "Commercial photography portfolio" },
+                            { src: "/images/thumbnails/commercial/thumb_through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg", alt: "Commercial photography portfolio" }
+                        ]
+                    },
+                    {
+                        id: 7,
+                        title: "Event Photography Highlights",
+                        description: "Curated highlights from Philadelphia event photography sessions",
+                        category: "event",
+                        images: [
+                            { src: "/images/thumbnails/thumb_hero_1.jpg", alt: "Event photography highlights" },
+                            { src: "/images/thumbnails/thumb_hero_2.jpg", alt: "Event photography highlights" },
+                            { src: "/images/thumbnails/thumb_hero_3.jpg", alt: "Event photography highlights" },
+                            { src: "/images/thumbnails/thumb_hero_4.jpg", alt: "Event photography highlights" },
+                            { src: "/images/thumbnails/thumb_hero_5.jpg", alt: "Event photography highlights" }
                         ]
                     }
                 ]);
