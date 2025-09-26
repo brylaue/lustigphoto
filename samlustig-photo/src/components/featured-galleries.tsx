@@ -5,31 +5,31 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Eye } from 'lucide-react'
 
-// Mock data - this will be replaced with CMS data
+// Featured galleries showcasing Philadelphia work
 const featuredGalleries = [
   {
     id: 1,
-    title: 'Wedding Collection',
-    description: 'Beautiful moments from recent weddings',
-    image: '/api/placeholder/600/400',
+    title: 'Philadelphia Corporate Events',
+    description: 'Professional event photography at Philadelphia\'s premier venues',
+    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     imageCount: 45,
-    slug: 'wedding-collection'
+    slug: 'philadelphia-corporate-events'
   },
   {
     id: 2,
-    title: 'Portrait Sessions',
-    description: 'Professional portrait photography',
-    image: '/api/placeholder/600/400',
+    title: 'Professional Headshots',
+    description: 'Executive and professional headshots in Philadelphia',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     imageCount: 32,
-    slug: 'portrait-sessions'
+    slug: 'professional-headshots-philadelphia'
   },
   {
     id: 3,
-    title: 'Commercial Work',
-    description: 'Brand and product photography',
-    image: '/api/placeholder/600/400',
+    title: 'Philadelphia Weddings',
+    description: 'Wedding photography at iconic Philadelphia locations',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     imageCount: 28,
-    slug: 'commercial-work'
+    slug: 'philadelphia-weddings'
   }
 ]
 
@@ -45,10 +45,10 @@ export default function FeaturedGalleries() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Featured Galleries
+            Philadelphia Photography Portfolio
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Explore some of my recent work and discover the stories behind each photograph.
+            Discover my recent work throughout the Greater Philadelphia Area, from corporate events to intimate weddings.
           </p>
         </motion.div>
 

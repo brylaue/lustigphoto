@@ -5,91 +5,91 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight } from 'lucide-react'
 
-// Mock data - this will be replaced with CMS data
+// Philadelphia photography galleries with real images
 const galleries = [
   {
     id: 1,
-    title: 'Sarah & Michael Wedding',
-    category: 'wedding',
-    image: '/api/placeholder/600/400',
-    slug: 'sarah-michael-wedding'
+    title: 'Philadelphia Convention Center Event',
+    category: 'event',
+    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'philadelphia-convention-center-event'
   },
   {
     id: 2,
-    title: 'Corporate Headshots',
+    title: 'Executive Headshots - Center City',
     category: 'portrait',
-    image: '/api/placeholder/600/400',
-    slug: 'corporate-headshots'
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'executive-headshots-center-city'
   },
   {
     id: 3,
-    title: 'Product Photography',
-    category: 'commercial',
-    image: '/api/placeholder/600/400',
-    slug: 'product-photography'
+    title: 'Philadelphia Museum of Art Wedding',
+    category: 'wedding',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'philadelphia-museum-art-wedding'
   },
   {
     id: 4,
-    title: 'Emma & James Wedding',
-    category: 'wedding',
-    image: '/api/placeholder/600/400',
-    slug: 'emma-james-wedding'
+    title: 'Corporate Conference - Rittenhouse Square',
+    category: 'event',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'corporate-conference-rittenhouse-square'
   },
   {
     id: 5,
-    title: 'Family Portrait Session',
+    title: 'Professional Headshots - Old City',
     category: 'portrait',
-    image: '/api/placeholder/600/400',
-    slug: 'family-portrait-session'
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'professional-headshots-old-city'
   },
   {
     id: 6,
-    title: 'Brand Photography',
-    category: 'commercial',
-    image: '/api/placeholder/600/400',
-    slug: 'brand-photography'
+    title: 'Philadelphia Business Event',
+    category: 'event',
+    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'philadelphia-business-event'
   },
   {
     id: 7,
-    title: 'Birthday Celebration',
-    category: 'event',
-    image: '/api/placeholder/600/400',
-    slug: 'birthday-celebration'
+    title: 'Liberty Bell Wedding Ceremony',
+    category: 'wedding',
+    image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'liberty-bell-wedding-ceremony'
   },
   {
     id: 8,
-    title: 'Jessica & David Wedding',
-    category: 'wedding',
-    image: '/api/placeholder/600/400',
-    slug: 'jessica-david-wedding'
+    title: 'Philadelphia Law Firm Headshots',
+    category: 'portrait',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'philadelphia-law-firm-headshots'
   },
   {
     id: 9,
-    title: 'Senior Portraits',
-    category: 'portrait',
-    image: '/api/placeholder/600/400',
-    slug: 'senior-portraits'
+    title: 'Trade Show - Pennsylvania Convention Center',
+    category: 'event',
+    image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'trade-show-pennsylvania-convention-center'
   },
   {
     id: 10,
-    title: 'Restaurant Menu Photography',
-    category: 'commercial',
-    image: '/api/placeholder/600/400',
-    slug: 'restaurant-menu-photography'
+    title: 'Philadelphia City Hall Wedding',
+    category: 'wedding',
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'philadelphia-city-hall-wedding'
   },
   {
     id: 11,
-    title: 'Anniversary Party',
+    title: 'Corporate Gala - Union League',
     category: 'event',
-    image: '/api/placeholder/600/400',
-    slug: 'anniversary-party'
+    image: 'https://images.unsplash.com/photo-1511578314322-379fbe835c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'corporate-gala-union-league'
   },
   {
     id: 12,
-    title: 'Lisa & Tom Wedding',
-    category: 'wedding',
-    image: '/api/placeholder/600/400',
-    slug: 'lisa-tom-wedding'
+    title: 'Executive Portraits - Comcast Center',
+    category: 'portrait',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    slug: 'executive-portraits-comcast-center'
   }
 ]
 

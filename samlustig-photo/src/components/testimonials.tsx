@@ -5,24 +5,24 @@ import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    body: 'Sam captured our wedding day perfectly. Every moment was beautifully documented, and we couldn\'t be happier with the results. The photos truly tell the story of our special day.',
+    body: 'Sam\'s event photography at our Philadelphia conference was exceptional. He captured every important moment and delivered professional results that exceeded our expectations.',
     author: {
-      name: 'Sarah & Michael Johnson',
-      handle: 'Wedding Couple',
+      name: 'Sarah Mitchell',
+      handle: 'Event Coordinator, Philadelphia Convention Center',
     },
   },
   {
-    body: 'Professional, creative, and incredibly talented. Sam made our family portrait session fun and comfortable, and the photos exceeded our expectations.',
+    body: 'The professional headshots Sam took for our Philadelphia law firm were outstanding. He made everyone feel comfortable and the results were exactly what we needed.',
     author: {
-      name: 'Jennifer Martinez',
-      handle: 'Family Portrait Client',
+      name: 'Robert Thompson',
+      handle: 'Managing Partner, Thompson & Associates',
     },
   },
   {
-    body: 'The commercial photography for our product launch was outstanding. Sam understood our brand vision and delivered images that perfectly represented our company.',
+    body: 'Sam photographed our wedding at the Philadelphia Museum of Art and the results were breathtaking. He perfectly captured the elegance of the venue and our special day.',
     author: {
-      name: 'David Chen',
-      handle: 'Business Owner',
+      name: 'Emily & James Rodriguez',
+      handle: 'Wedding Couple, Philadelphia',
     },
   },
 ]
@@ -39,10 +39,10 @@ export default function Testimonials() {
           className="mx-auto max-w-xl text-center"
         >
           <h2 className="text-lg font-semibold leading-8 tracking-tight text-blue-600 dark:text-blue-400">
-            Testimonials
+            Philadelphia Client Testimonials
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            What clients say
+            What Philadelphia clients say
           </p>
         </motion.div>
         

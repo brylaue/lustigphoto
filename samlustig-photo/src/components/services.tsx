@@ -5,28 +5,28 @@ import { Camera, Heart, Briefcase, Users } from 'lucide-react'
 
 const services = [
   {
+    name: 'Corporate Event Photography',
+    description: 'Professional event photography for Philadelphia businesses, conferences, and corporate gatherings.',
+    icon: Briefcase,
+    features: ['Full event coverage', 'Candid moments', 'Group photos', 'Same-day previews']
+  },
+  {
+    name: 'Professional Headshots',
+    description: 'Executive and professional headshots for Philadelphia professionals and businesses.',
+    icon: Users,
+    features: ['Studio or location', 'Multiple outfit changes', 'Professional editing', 'Digital delivery']
+  },
+  {
     name: 'Wedding Photography',
-    description: 'Capture your special day with beautiful, timeless wedding photography that tells your unique love story.',
+    description: 'Beautiful wedding photography at Philadelphia\'s iconic venues and locations.',
     icon: Heart,
     features: ['Full day coverage', 'Engagement session', 'Online gallery', 'High-resolution images']
   },
   {
-    name: 'Portrait Sessions',
-    description: 'Professional portrait photography for individuals, families, and corporate headshots.',
-    icon: Users,
-    features: ['Studio or location', 'Professional editing', 'Multiple outfit changes', 'Digital delivery']
-  },
-  {
-    name: 'Commercial Photography',
-    description: 'High-quality product and brand photography to showcase your business and products.',
-    icon: Briefcase,
-    features: ['Product photography', 'Brand imagery', 'E-commerce ready', 'Fast turnaround']
-  },
-  {
-    name: 'Event Photography',
-    description: 'Document your special events, parties, and celebrations with professional event photography.',
+    name: 'Conference & Trade Show Photography',
+    description: 'Document your Philadelphia conferences, trade shows, and business events.',
     icon: Camera,
-    features: ['Candid moments', 'Group photos', 'Event highlights', 'Same-day previews']
+    features: ['Event highlights', 'Speaker photos', 'Networking moments', 'Brand coverage']
   }
 ]
 
@@ -42,10 +42,10 @@ export default function Services() {
           className="mx-auto max-w-2xl text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-            Photography Services
+            Philadelphia Photography Services
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
-            Professional photography services tailored to your needs, from intimate portraits to grand celebrations.
+            Professional photography services throughout the Greater Philadelphia Area, from corporate events to intimate celebrations.
           </p>
         </motion.div>
 

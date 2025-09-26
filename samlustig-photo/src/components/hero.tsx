@@ -27,8 +27,8 @@ export default function Hero() {
           </motion.div>
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-            Capturing Life's
-            <span className="block text-blue-400">Beautiful Moments</span>
+            Philadelphia's Premier
+            <span className="block text-blue-400">Event Photographer</span>
           </h1>
           
           <motion.p
@@ -37,8 +37,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-6 text-lg leading-8 text-gray-300"
           >
-            Professional photography services specializing in portraits, weddings, and commercial photography. 
-            Let me help you preserve your most precious memories with stunning, timeless images.
+            Professional event photography and headshot services throughout the Greater Philadelphia Area. 
+            Specializing in corporate events, weddings, and professional portraits that capture your most important moments.
           </motion.p>
           
           <motion.div

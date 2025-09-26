@@ -4,11 +4,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 const categories = [
-  { id: 'all', name: 'All', count: 12 },
-  { id: 'wedding', name: 'Wedding', count: 4 },
-  { id: 'portrait', name: 'Portrait', count: 3 },
-  { id: 'commercial', name: 'Commercial', count: 3 },
-  { id: 'event', name: 'Event', count: 2 },
+  { id: 'all', name: 'All Philadelphia Work', count: 12 },
+  { id: 'event', name: 'Corporate Events', count: 5 },
+  { id: 'portrait', name: 'Professional Headshots', count: 4 },
+  { id: 'wedding', name: 'Philadelphia Weddings', count: 3 },
 ]
 
 export default function GalleryFilter() {

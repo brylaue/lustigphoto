@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sam Lustig Photography Website
+
+A modern, responsive photography website built with Next.js, TypeScript, and Tailwind CSS, specifically optimized for the Greater Philadelphia Area market.
+
+## Features
+
+- **Responsive Design**: Mobile-first approach with beautiful animations
+- **SEO Optimized**: Local Philadelphia SEO with schema markup
+- **Image Optimization**: Next.js Image component with Unsplash integration
+- **CMS-like Admin**: Simple gallery management interface
+- **Modern UI**: Clean, professional design with dark mode support
+- **Performance**: Fast loading with optimized images and code splitting
+
+## Services Covered
+
+- Corporate Event Photography
+- Professional Headshots
+- Wedding Photography
+- Conference & Trade Show Photography
+
+## Philadelphia SEO Features
+
+- Local business schema markup
+- Philadelphia-specific keywords and content
+- Geographic targeting for Greater Philadelphia Area
+- Local venue references (Convention Center, Museum of Art, etc.)
+- Philadelphia phone number and location
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd samlustig-photo
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+### Vercel (Recommended)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to GitHub
+2. Connect your repository to Vercel
+3. Deploy automatically
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Other Platforms
 
-## Deploy on Vercel
+The app can be deployed to any platform that supports Next.js:
+- Netlify
+- AWS Amplify
+- DigitalOcean App Platform
+- Railway
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Admin Interface
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Access the admin interface at `/admin` to:
+- Add new galleries
+- Edit existing galleries
+- Toggle featured galleries
+- Delete galleries
+- View gallery statistics
+
+## Image Management
+
+Currently using Unsplash images for demonstration. To use your own images:
+
+1. Replace image URLs in the gallery data
+2. Update the `next.config.js` to allow your image domain
+3. Consider using a CDN for better performance
+
+## SEO Configuration
+
+The website includes:
+- Meta tags optimized for Philadelphia market
+- Local business schema markup
+- Sitemap generation
+- Robots.txt
+- Open Graph tags
+- Twitter Card support
+
+## Customization
+
+### Colors and Branding
+- Update colors in `tailwind.config.js`
+- Modify the hero section in `src/components/hero.tsx`
+- Update contact information in `src/components/footer.tsx`
+
+### Content
+- Edit gallery data in `src/components/gallery-grid.tsx`
+- Update services in `src/components/services.tsx`
+- Modify testimonials in `src/components/testimonials.tsx`
+
+### SEO
+- Update schema markup in `src/components/schema-markup.tsx`
+- Modify meta tags in `src/app/layout.tsx`
+- Update sitemap in `src/app/sitemap.ts`
+
+## Performance
+
+- Images are automatically optimized by Next.js
+- Code splitting for faster loading
+- Responsive images with multiple sizes
+- Lazy loading for better performance
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+This project is for Sam Lustig Photography. All rights reserved.
+
+## Support
+
+For questions or support, contact:
+- Email: contact@samlustigphoto.com
+- Phone: (215) 555-0123
