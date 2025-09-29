@@ -1,0 +1,56 @@
+@@ .. @@
+             <form id="gallery-form" class="space-y-4">
+                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                     <div>
+                         <label class="block text-sm font-medium text-gray-700">Gallery Title</label>
+-                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
++                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                     </div>
+                     <div>
+                         <label class="block text-sm font-medium text-gray-700">Category</label>
+-                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
++                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                             <option value="event">Event Photography</option>
+                             <option value="portrait">Professional Headshots</option>
+                             <option value="wedding">Wedding Photography</option>
+@@ .. @@
+                 <div>
+                     <label class="block text-sm font-medium text-gray-700">Description</label>
+-                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
++                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                 </div>
+                 <div>
+                     <label class="block text-sm font-medium text-gray-700">Image URLs (one per line)</label>
+-                    <textarea id="gallery-images" rows="4" placeholder="/images/galleries/category/image1.jpg&#10;/images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
++                    <textarea id="gallery-images" rows="4" placeholder="images/galleries/category/image1.jpg&#10;images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                 </div>
+                 <div class="flex justify-end">
+                     <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+@@ .. @@
+         // Load galleries from JSON
+         async function loadGalleries() {
+             try {
+-                const response = await fetch('./galleries.json');
++                const response = await fetch('galleries.json');
+                 galleries = await response.json();
+                 displayGalleries();
+             } catch (error) {
+@@ .. @@
+             
+             // Display JSON for manual update
+             console.log('Galleries data:', JSON.stringify(galleries, null, 2));
+-            
+-            // Show success message with instructions
+-            const instructions = `
+-Gallery saved to browser storage! 
+-
+-To make changes permanent across all visitors:
+-1. Copy the JSON data from the browser console
+-2. Update the galleries.json file in your project
+-3. Redeploy your site
+-
+-The changes are now visible on your local site.
+-            `;
+-            alert(instructions);
++            alert('Gallery saved! Check browser console for JSON data to update galleries.json file.');
+         }
