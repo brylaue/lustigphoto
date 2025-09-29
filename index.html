@@ -280,6 +280,12 @@
             }
         }
 
+        function ensureRelative(path) {
+            const fallback = 'images/placeholder.jpg';
+            if (!path || typeof path !== 'string') return fallback;
+            return path.replace(/^\//, '');
+        }
+
         function displayGalleries() {
             const container = document.getElementById('galleries-container');
             if (!container) return;
@@ -297,10 +303,10 @@
             container.innerHTML = displayGalleries.map(gallery => `
                 <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer" onclick="openGallery(${gallery.id})">
                     <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="${gallery.images[0]?.src || '/images/placeholder.jpg'}" 
+                        <img src="${ensureRelative(gallery.images[0]?.src || 'images/placeholder.jpg')}" 
                              alt="${gallery.images[0]?.alt || gallery.title}" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                             onerror="this.src='/images/placeholder.jpg'">
+                             onerror="this.src='images/placeholder.jpg'">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <div class="flex items-center space-x-2 text-white">
                                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -350,10 +356,10 @@
                 <div class="relative">
                     <div class="aspect-[4/3] bg-gray-100 flex items-center justify-center">
                         <img id="modal-image" 
-                             src="${currentGallery.images[currentImageIndex]?.src}" 
+                             src="${ensureRelative(currentGallery.images[currentImageIndex]?.src)}" 
                              alt="${currentGallery.images[currentImageIndex]?.alt}" 
                              class="max-w-full max-h-full object-contain"
-                             onerror="this.src='/images/placeholder.jpg'">
+                             onerror="this.src='images/placeholder.jpg'">
                     </div>
                     ${currentGallery.images.length > 1 ? `
                         <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
@@ -375,11 +381,11 @@
                         </div>
                         <div class="mt-4 grid grid-cols-6 gap-2 max-h-32 overflow-y-auto">
                             ${currentGallery.images.map((img, index) => `
-                                <img src="${img.src}" 
+                                <img src="${ensureRelative(img.src)}" 
                                      alt="${img.alt}" 
                                      class="w-full h-16 object-cover rounded cursor-pointer transition-all ${index === currentImageIndex ? 'ring-2 ring-blue-500' : 'hover:opacity-75'}"
                                      onclick="selectImage(${index})"
-                                     onerror="this.src='/images/placeholder.jpg'">
+                                     onerror="this.src='images/placeholder.jpg'">
                             `).join('')}
                         </div>
                     </div>
@@ -464,6 +470,11 @@
                     break;
             }
         });
+
+        // Expose functions for inline onclick handlers
+        window.openGallery = openGallery;
+        window.selectImage = selectImage;
+        window.navigateImage = navigateImage;
     </script>
 </body>
 </html>
