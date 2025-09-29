@@ -1,56 +1,281 @@
-@@ .. @@
-             <form id="gallery-form" class="space-y-4">
-                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                     <div>
-                         <label class="block text-sm font-medium text-gray-700">Gallery Title</label>
--                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-+                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                     </div>
-                     <div>
-                         <label class="block text-sm font-medium text-gray-700">Category</label>
--                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-+                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                             <option value="event">Event Photography</option>
-                             <option value="portrait">Professional Headshots</option>
-                             <option value="wedding">Wedding Photography</option>
-@@ .. @@
-                 <div>
-                     <label class="block text-sm font-medium text-gray-700">Description</label>
--                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-+                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                 </div>
-                 <div>
-                     <label class="block text-sm font-medium text-gray-700">Image URLs (one per line)</label>
--                    <textarea id="gallery-images" rows="4" placeholder="/images/galleries/category/image1.jpg&#10;/images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-+                    <textarea id="gallery-images" rows="4" placeholder="images/galleries/category/image1.jpg&#10;images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                 </div>
-                 <div class="flex justify-end">
-                     <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
-@@ .. @@
-         // Load galleries from JSON
-         async function loadGalleries() {
-             try {
--                const response = await fetch('./galleries.json');
-+                const response = await fetch('galleries.json');
-                 galleries = await response.json();
-                 displayGalleries();
-             } catch (error) {
-@@ .. @@
-             
-             // Display JSON for manual update
-             console.log('Galleries data:', JSON.stringify(galleries, null, 2));
--            
--            // Show success message with instructions
--            const instructions = `
--Gallery saved to browser storage! 
--
--To make changes permanent across all visitors:
--1. Copy the JSON data from the browser console
--2. Update the galleries.json file in your project
--3. Redeploy your site
--
--The changes are now visible on your local site.
--            `;
--            alert(instructions);
-+            alert('Gallery saved! Check browser console for JSON data to update galleries.json file.');
-         }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Admin - Sam Lustig Photo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blue': {
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+            <div class="flex items-center space-x-2">
+                <svg class="h-8 w-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span class="text-xl font-bold text-gray-900">Gallery Admin</span>
+            </div>
+            <a href="/" class="text-sm font-semibold text-blue-600 hover:text-blue-500">← Back to Site</a>
+        </nav>
+    </header>
+
+    <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Gallery Management</h1>
+            <p class="mt-2 text-gray-600">Manage your photography galleries and images</p>
+        </div>
+
+        <!-- Add Gallery Form -->
+        <div class="bg-white rounded-lg shadow p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">Add New Gallery</h2>
+            <form id="gallery-form" class="space-y-4">
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Gallery Title</label>
+                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Category</label>
+                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            <option value="event">Event Photography</option>
+                            <option value="portrait">Professional Headshots</option>
+                            <option value="wedding">Wedding Photography</option>
+                            <option value="commercial">Commercial Photography</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Image URLs (one per line)</label>
+                    <textarea id="gallery-images" rows="4" placeholder="/images/galleries/category/image1.jpg&#10;/images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
+                        Add Gallery
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Galleries List -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h2 class="text-xl font-semibold text-gray-900">Current Galleries</h2>
+            </div>
+            <div id="galleries-list" class="divide-y divide-gray-200">
+                <!-- Galleries will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let galleries = [];
+
+        // Load galleries from JSON
+        async function loadGalleries() {
+            try {
+                const response = await fetch('./galleries.json');
+                galleries = await response.json();
+                displayGalleries();
+            } catch (error) {
+                console.error('Error loading galleries:', error);
+                galleries = [];
+                displayGalleries();
+            }
+        }
+
+        function displayGalleries() {
+            const list = document.getElementById('galleries-list');
+            if (galleries.length === 0) {
+                list.innerHTML = '<div class="p-6 text-center text-gray-500">No galleries found. Add your first gallery above.</div>';
+                return;
+            }
+
+            list.innerHTML = galleries.map(gallery => `
+                <div class="p-6">
+                    <div class="flex items-center justify-between">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-medium text-gray-900">${gallery.title}</h3>
+                            <p class="text-sm text-gray-600">${gallery.description || 'No description'}</p>
+                            <div class="mt-2 flex items-center space-x-4 text-sm text-gray-500">
+                                <span class="capitalize">${gallery.category}</span>
+                                <span>${gallery.images.length} images</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="editGallery(${gallery.id})" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                Edit
+                            </button>
+                            <button onclick="deleteGallery(${gallery.id})" class="text-red-600 hover:text-red-800 text-sm font-medium">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    ${gallery.images.length > 0 ? `
+                        <div class="mt-4 grid grid-cols-4 gap-2">
+                            ${gallery.images.slice(0, 4).map(img => `
+                                <img src="${img.src}" alt="${img.alt}" class="w-full h-20 object-cover rounded">
+                            `).join('')}
+                            ${gallery.images.length > 4 ? `<div class="w-full h-20 bg-gray-200 rounded flex items-center justify-center text-sm text-gray-500">+${gallery.images.length - 4} more</div>` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Add gallery form handler
+        document.getElementById('gallery-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('gallery-title').value;
+            const category = document.getElementById('gallery-category').value;
+            const description = document.getElementById('gallery-description').value;
+            const imagesText = document.getElementById('gallery-images').value;
+            
+            const images = imagesText.split('\n')
+                .filter(url => url.trim())
+                .map((url, index) => ({
+                    id: `${Date.now()}-${index}`,
+                    src: url.trim(),
+                    alt: `${title} - Image ${index + 1}`,
+                    width: 1200,
+                    height: 800
+                }));
+
+            const newGallery = {
+                id: Date.now(),
+                title,
+                description,
+                category,
+                images,
+                featured: false,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            galleries.push(newGallery);
+            saveGalleries();
+            displayGalleries();
+            
+            // Reset form
+            document.getElementById('gallery-form').reset();
+            
+            alert('Gallery added successfully!');
+        });
+
+        function editGallery(id) {
+            const gallery = galleries.find(g => g.id === id);
+            if (!gallery) return;
+            
+            // Fill form with gallery data
+            document.getElementById('gallery-title').value = gallery.title;
+            document.getElementById('gallery-category').value = gallery.category;
+            document.getElementById('gallery-description').value = gallery.description;
+            document.getElementById('gallery-images').value = gallery.images.map(img => img.src).join('\n');
+            
+            // Scroll to form
+            document.getElementById('gallery-form').scrollIntoView({ behavior: 'smooth' });
+            
+            // Remove from galleries list and update form button
+            galleries = galleries.filter(g => g.id !== id);
+            document.querySelector('#gallery-form button[type="submit"]').textContent = 'Update Gallery';
+            document.querySelector('#gallery-form button[type="submit"]').onclick = function(e) {
+                e.preventDefault();
+                updateGallery(id);
+            };
+        }
+
+        function updateGallery(id) {
+            const title = document.getElementById('gallery-title').value;
+            const category = document.getElementById('gallery-category').value;
+            const description = document.getElementById('gallery-description').value;
+            const imagesText = document.getElementById('gallery-images').value;
+            
+            const images = imagesText.split('\n')
+                .filter(url => url.trim())
+                .map((url, index) => ({
+                    id: `${Date.now()}-${index}`,
+                    src: url.trim(),
+                    alt: `${title} - Image ${index + 1}`,
+                    width: 1200,
+                    height: 800
+                }));
+
+            const updatedGallery = {
+                id,
+                title,
+                description,
+                category,
+                images,
+                featured: false,
+                createdAt: galleries.find(g => g.id === id)?.createdAt || new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+            galleries.push(updatedGallery);
+            saveGalleries();
+            displayGalleries();
+            
+            // Reset form
+            document.getElementById('gallery-form').reset();
+            document.querySelector('#gallery-form button[type="submit"]').textContent = 'Add Gallery';
+            document.querySelector('#gallery-form button[type="submit"]').onclick = null;
+            
+            alert('Gallery updated successfully!');
+        }
+
+        function deleteGallery(id) {
+            if (confirm('Are you sure you want to delete this gallery?')) {
+                galleries = galleries.filter(g => g.id !== id);
+                saveGalleries();
+                displayGalleries();
+                alert('Gallery deleted successfully!');
+            }
+        }
+
+        function saveGalleries() {
+            // Save to localStorage as primary storage
+            localStorage.setItem('galleries', JSON.stringify(galleries));
+            
+            // Display JSON for manual update
+            console.log('Galleries data:', JSON.stringify(galleries, null, 2));
+            
+            // Show success message with instructions
+            const instructions = `
+Gallery saved to browser storage! 
+
+To make changes permanent across all visitors:
+1. Copy the JSON data from the browser console
+2. Update the galleries.json file in your project
+3. Redeploy your site
+
+The changes are now visible on your local site.
+            `;
+            alert(instructions);
+        }
+
+        // Load galleries when page loads
+        document.addEventListener('DOMContentLoaded', loadGalleries);
+    </script>
+</body>
+</html>
