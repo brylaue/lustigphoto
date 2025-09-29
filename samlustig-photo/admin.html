@@ -254,13 +254,24 @@
         }
 
         function saveGalleries() {
-            // In a real implementation, this would save to a server
-            // For now, we'll store in localStorage as a fallback
+            // Save to localStorage as primary storage
             localStorage.setItem('galleries', JSON.stringify(galleries));
             
-            // Also try to save to a JSON file (this would work with a server)
+            // Display JSON for manual update
             console.log('Galleries data:', JSON.stringify(galleries, null, 2));
-            console.log('To update your site, copy this data to /data/galleries.json');
+            
+            // Show success message with instructions
+            const instructions = `
+Gallery saved to browser storage! 
+
+To make changes permanent across all visitors:
+1. Copy the JSON data from the browser console
+2. Update the galleries.json file in your project
+3. Redeploy your site
+
+The changes are now visible on your local site.
+            `;
+            alert(instructions);
         }
 
         // Load galleries when page loads
