@@ -4,9 +4,9 @@
   "description": "Professional photography website for Sam Lustig Photography in Philadelphia",
   "main": "index.html",
   "scripts": {
-    "dev": "python -m http.server 8000",
+    "dev": "npx http-server -p 8000 -c-1",
     "build": "echo 'Static site - no build needed'",
-    "start": "python -m http.server 8000"
+    "start": "npx http-server -p 8000 -c-1"
   },
   "keywords": [
     "photography",
