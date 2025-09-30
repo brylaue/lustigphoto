@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philadelphia Event Photography & Headshots | Sam Lustig Photo</title>
     <meta name="description" content="Professional event photography and headshot services in Philadelphia, PA. Specializing in corporate events, weddings, and professional portraits throughout the Greater Philadelphia Area.">
+    <link rel="canonical" href="https://samlustigphoto.com/">
+    <meta name="author" content="Sam Lustig Photography">
+    <meta name="theme-color" content="#111827">
+    <meta property="og:title" content="Philadelphia Event Photography & Headshots | Sam Lustig Photo">
+    <meta property="og:description" content="Professional event photography and headshot services in Philadelphia, PA.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://samlustigphoto.com/">
+    <meta property="og:image" content="/samlustig-photo/images/hero/hero_1.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Philadelphia Event Photography & Headshots | Sam Lustig Photo">
+    <meta name="twitter:description" content="Professional event photography and headshot services in Philadelphia, PA.">
+    <meta name="twitter:image" content="/samlustig-photo/images/hero/hero_1.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -266,7 +278,7 @@
         // Load galleries from JSON
         async function loadGalleries() {
             try {
-                const response = await fetch('./galleries.json');
+                const response = await fetch('./data/galleries.json');
                 galleries = await response.json();
                 displayGalleries();
             } catch (error) {
@@ -297,10 +309,10 @@
             container.innerHTML = displayGalleries.map(gallery => `
                 <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer" onclick="openGallery(${gallery.id})">
                     <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="${gallery.images[0]?.src || '/images/placeholder.jpg'}" 
+                        <img src="${gallery.images[0]?.src || 'data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"800\" viewBox=\"0 0 1200 800\"><rect width=\"100%\" height=\"100%\" fill=\"%23f3f4f6\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%239ca3af\" font-family=\"system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial\" font-size=\"28\">Image coming soon</text></svg>'}" 
                              alt="${gallery.images[0]?.alt || gallery.title}" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                             onerror="this.src='/images/placeholder.jpg'">
+                             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"800\" viewBox=\"0 0 1200 800\"><rect width=\"100%\" height=\"100%\" fill=\"%23f3f4f6\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%239ca3af\" font-family=\"system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial\" font-size=\"28\">Image coming soon</text></svg>'">
                         <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                             <div class="flex items-center space-x-2 text-white">
                                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -353,7 +365,7 @@
                              src="${currentGallery.images[currentImageIndex]?.src}" 
                              alt="${currentGallery.images[currentImageIndex]?.alt}" 
                              class="max-w-full max-h-full object-contain"
-                             onerror="this.src='/images/placeholder.jpg'">
+                             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"800\" viewBox=\"0 0 1200 800\"><rect width=\"100%\" height=\"100%\" fill=\"%23f3f4f6\"/><text x=\"50%\" y=\"50%\" dominant-baseline=\"middle\" text-anchor=\"middle\" fill=\"%239ca3af\" font-family=\"system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial\" font-size=\"28\">Image coming soon</text></svg>'">
                     </div>
                     ${currentGallery.images.length > 1 ? `
                         <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">

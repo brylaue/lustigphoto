@@ -6,3 +6,4 @@ Sitemap: https://samlustigphoto.com/sitemap.xml
 
 # Disallow admin areas
 Disallow: /admin.html
+Disallow: /samlustig-photo/admin.html
