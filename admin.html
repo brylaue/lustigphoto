@@ -1,56 +1,605 @@
-@@ .. @@
-             <form id="gallery-form" class="space-y-4">
-                 <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                     <div>
-                         <label class="block text-sm font-medium text-gray-700">Gallery Title</label>
--                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-+                        <input type="text" id="gallery-title" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                     </div>
-                     <div>
-                         <label class="block text-sm font-medium text-gray-700">Category</label>
--                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-+                        <select id="gallery-category" required class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                             <option value="event">Event Photography</option>
-                             <option value="portrait">Professional Headshots</option>
-                             <option value="wedding">Wedding Photography</option>
-@@ .. @@
-                 <div>
-                     <label class="block text-sm font-medium text-gray-700">Description</label>
--                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-+                    <textarea id="gallery-description" rows="3" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                 </div>
-                 <div>
-                     <label class="block text-sm font-medium text-gray-700">Image URLs (one per line)</label>
--                    <textarea id="gallery-images" rows="4" placeholder="/images/galleries/category/image1.jpg&#10;/images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-+                    <textarea id="gallery-images" rows="4" placeholder="images/galleries/category/image1.jpg&#10;images/galleries/category/image2.jpg" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
-                 </div>
-                 <div class="flex justify-end">
-                     <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors">
-@@ .. @@
-         // Load galleries from JSON
-         async function loadGalleries() {
-             try {
--                const response = await fetch('./galleries.json');
-+                const response = await fetch('galleries.json');
-                 galleries = await response.json();
-                 displayGalleries();
-             } catch (error) {
-@@ .. @@
-             
-             // Display JSON for manual update
-             console.log('Galleries data:', JSON.stringify(galleries, null, 2));
--            
--            // Show success message with instructions
--            const instructions = `
--Gallery saved to browser storage! 
--
--To make changes permanent across all visitors:
--1. Copy the JSON data from the browser console
--2. Update the galleries.json file in your project
--3. Redeploy your site
--
--The changes are now visible on your local site.
--            `;
--            alert(instructions);
-+            alert('Gallery saved! Check browser console for JSON data to update galleries.json file.');
-         }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Manager - Sam Lustig Photo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blue': {
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .drag-over {
+            border-color: #3b82f6 !important;
+            background-color: #eff6ff !important;
+        }
+        .image-preview {
+            transition: all 0.3s ease;
+        }
+        .image-preview:hover {
+            transform: scale(1.05);
+        }
+        .gallery-card {
+            transition: all 0.3s ease;
+        }
+        .gallery-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 p-2 rounded-lg">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900">Gallery Manager</h1>
+                    <p class="text-sm text-gray-500">Manage your photography portfolio</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="text-sm text-gray-600">
+                    <span id="gallery-count">0</span> galleries
+                </div>
+                <a href="/" class="text-sm font-semibold text-blue-600 hover:text-blue-500 flex items-center space-x-1">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span>Back to Site</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="mx-auto max-w-7xl px-6 py-8 lg:px-8">
+        <!-- Quick Actions -->
+        <div class="mb-8 flex flex-col sm:flex-row gap-4">
+            <button id="new-gallery-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center space-x-2">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+                <span>Create New Gallery</span>
+            </button>
+            <button id="export-data-btn" class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors flex items-center space-x-2">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Export Data</span>
+            </button>
+        </div>
+
+        <!-- Galleries Grid -->
+        <div id="galleries-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Galleries will be loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16">
+            <div class="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                <svg class="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">No galleries yet</h3>
+            <p class="text-gray-600 mb-6">Create your first gallery to get started</p>
+            <button onclick="openGalleryModal()" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Create Gallery
+            </button>
+        </div>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b border-gray-200">
+                <div>
+                    <h2 id="modal-title" class="text-2xl font-bold text-gray-900">Create New Gallery</h2>
+                    <p class="text-gray-600 mt-1">Add photos and organize your portfolio</p>
+                </div>
+                <button id="close-modal" class="text-gray-400 hover:text-gray-600 transition-colors">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
+                <form id="gallery-form" class="space-y-6">
+                    <!-- Basic Info -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Gallery Title</label>
+                            <input type="text" id="gallery-title" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                   placeholder="Enter gallery title">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Category</label>
+                            <select id="gallery-category" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                                <option value="">Select category</option>
+                                <option value="event">Event Photography</option>
+                                <option value="portrait">Professional Headshots</option>
+                                <option value="wedding">Wedding Photography</option>
+                                <option value="commercial">Commercial Photography</option>
+                                <option value="family">Family Photography</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Description</label>
+                        <textarea id="gallery-description" rows="3" 
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                  placeholder="Describe this gallery..."></textarea>
+                    </div>
+
+                    <!-- Featured Toggle -->
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" id="gallery-featured" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="gallery-featured" class="text-sm font-medium text-gray-700">Feature this gallery on homepage</label>
+                    </div>
+
+                    <!-- Image Upload Area -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-4">Gallery Images</label>
+                        
+                        <!-- Drag and Drop Zone -->
+                        <div id="drop-zone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-400 transition-colors cursor-pointer">
+                            <div class="space-y-4">
+                                <div class="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <svg class="h-8 w-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-lg font-medium text-gray-900">Drop images here or click to browse</p>
+                                    <p class="text-gray-600">Support for JPG, PNG, WebP files</p>
+                                </div>
+                                <input type="file" id="file-input" multiple accept="image/*" class="hidden">
+                                <button type="button" onclick="document.getElementById('file-input').click()" 
+                                        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Choose Files
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Image Previews -->
+                        <div id="image-previews" class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <!-- Image previews will appear here -->
+                        </div>
+
+                        <!-- Manual URL Input -->
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Or add image URLs manually</label>
+                            <div class="flex space-x-2">
+                                <input type="url" id="image-url-input" 
+                                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                       placeholder="https://example.com/image.jpg">
+                                <button type="button" id="add-url-btn" 
+                                        class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                                    Add URL
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+                        <button type="button" id="cancel-btn" 
+                                class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit" id="save-btn" 
+                                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                            Save Gallery
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="success-toast" class="fixed top-4 right-4 z-60 hidden">
+        <div class="bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg flex items-center space-x-3">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span id="toast-message">Gallery saved successfully!</span>
+        </div>
+    </div>
+
+    <!-- Export Modal -->
+    <div id="export-modal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full">
+            <div class="p-6 border-b border-gray-200">
+                <h2 class="text-xl font-bold text-gray-900">Export Gallery Data</h2>
+                <p class="text-gray-600 mt-1">Copy this JSON data to update your galleries.json file</p>
+            </div>
+            <div class="p-6">
+                <textarea id="export-data" readonly 
+                          class="w-full h-64 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 font-mono text-sm"
+                          placeholder="Gallery data will appear here..."></textarea>
+                <div class="flex justify-end space-x-4 mt-4">
+                    <button id="close-export" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50">
+                        Close
+                    </button>
+                    <button id="copy-data" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let galleries = [];
+        let currentGallery = null;
+        let currentImages = [];
+        let editingId = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadGalleries();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Modal controls
+            document.getElementById('new-gallery-btn').addEventListener('click', () => openGalleryModal());
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            document.getElementById('cancel-btn').addEventListener('click', closeModal);
+            
+            // Form submission
+            document.getElementById('gallery-form').addEventListener('submit', saveGallery);
+            
+            // File input
+            const fileInput = document.getElementById('file-input');
+            const dropZone = document.getElementById('drop-zone');
+            
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // Drag and drop
+            dropZone.addEventListener('dragover', handleDragOver);
+            dropZone.addEventListener('dragleave', handleDragLeave);
+            dropZone.addEventListener('drop', handleDrop);
+            dropZone.addEventListener('click', () => fileInput.click());
+            
+            // URL input
+            document.getElementById('add-url-btn').addEventListener('click', addImageUrl);
+            document.getElementById('image-url-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    addImageUrl();
+                }
+            });
+            
+            // Export functionality
+            document.getElementById('export-data-btn').addEventListener('click', showExportModal);
+            document.getElementById('close-export').addEventListener('click', closeExportModal);
+            document.getElementById('copy-data').addEventListener('click', copyExportData);
+        }
+
+        async function loadGalleries() {
+            try {
+                // Try to load from localStorage first
+                const stored = localStorage.getItem('galleries');
+                if (stored) {
+                    galleries = JSON.parse(stored);
+                } else {
+                    // Fallback to galleries.json
+                    const response = await fetch('./galleries.json');
+                    galleries = await response.json();
+                }
+                displayGalleries();
+            } catch (error) {
+                console.error('Error loading galleries:', error);
+                galleries = [];
+                displayGalleries();
+            }
+        }
+
+        function displayGalleries() {
+            const grid = document.getElementById('galleries-grid');
+            const emptyState = document.getElementById('empty-state');
+            const galleryCount = document.getElementById('gallery-count');
+            
+            galleryCount.textContent = galleries.length;
+            
+            if (galleries.length === 0) {
+                grid.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            grid.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            
+            grid.innerHTML = galleries.map(gallery => `
+                <div class="gallery-card bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="aspect-video bg-gray-100 relative overflow-hidden">
+                        ${gallery.images.length > 0 ? `
+                            <img src="${gallery.images[0].src}" alt="${gallery.title}" 
+                                 class="w-full h-full object-cover" 
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQgMTZMMTMuNTg2IDYuNDE0QTE2IDE2IDAgMCAxIDE2IDZMMjAgMTBNNiAyMEgxOEEyIDIgMCAwIDAgMjAgMThWNkEyIDIgMCAwIDAgMTggNEg2QTIgMiAwIDAgMCA0IDZWMThBMiAyIDAgMCAwIDYgMjBaIiBzdHJva2U9IiM5Q0E3QjciIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo='">
+                        ` : `
+                            <div class="w-full h-full flex items-center justify-center">
+                                <svg class="h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        `}
+                        <div class="absolute top-2 right-2 bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded">
+                            ${gallery.images.length} photos
+                        </div>
+                        ${gallery.featured ? `
+                            <div class="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded flex items-center space-x-1">
+                                <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                </svg>
+                                <span>Featured</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="font-semibold text-gray-900 text-lg">${gallery.title}</h3>
+                            <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full capitalize">${gallery.category}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">${gallery.description || 'No description'}</p>
+                        <div class="flex space-x-2">
+                            <button onclick="editGallery(${gallery.id})" 
+                                    class="flex-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition-colors">
+                                Edit
+                            </button>
+                            <button onclick="deleteGallery(${gallery.id})" 
+                                    class="flex-1 bg-red-50 text-red-600 px-3 py-2 rounded-lg text-sm font-medium hover:bg-red-100 transition-colors">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openGalleryModal(gallery = null) {
+            const modal = document.getElementById('gallery-modal');
+            const title = document.getElementById('modal-title');
+            
+            if (gallery) {
+                title.textContent = 'Edit Gallery';
+                editingId = gallery.id;
+                populateForm(gallery);
+            } else {
+                title.textContent = 'Create New Gallery';
+                editingId = null;
+                resetForm();
+            }
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('gallery-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+            resetForm();
+        }
+
+        function resetForm() {
+            document.getElementById('gallery-form').reset();
+            currentImages = [];
+            updateImagePreviews();
+            editingId = null;
+        }
+
+        function populateForm(gallery) {
+            document.getElementById('gallery-title').value = gallery.title;
+            document.getElementById('gallery-category').value = gallery.category;
+            document.getElementById('gallery-description').value = gallery.description || '';
+            document.getElementById('gallery-featured').checked = gallery.featured || false;
+            currentImages = [...gallery.images];
+            updateImagePreviews();
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+            const files = Array.from(e.dataTransfer.files);
+            processFiles(files);
+        }
+
+        function handleFileSelect(e) {
+            const files = Array.from(e.target.files);
+            processFiles(files);
+        }
+
+        function processFiles(files) {
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageData = {
+                            id: Date.now() + Math.random(),
+                            src: e.target.result,
+                            alt: file.name,
+                            width: 1200,
+                            height: 800
+                        };
+                        currentImages.push(imageData);
+                        updateImagePreviews();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function addImageUrl() {
+            const urlInput = document.getElementById('image-url-input');
+            const url = urlInput.value.trim();
+            
+            if (url && isValidImageUrl(url)) {
+                const imageData = {
+                    id: Date.now() + Math.random(),
+                    src: url,
+                    alt: 'Gallery image',
+                    width: 1200,
+                    height: 800
+                };
+                currentImages.push(imageData);
+                updateImagePreviews();
+                urlInput.value = '';
+            } else {
+                alert('Please enter a valid image URL');
+            }
+        }
+
+        function isValidImageUrl(url) {
+            try {
+                new URL(url);
+                return /\.(jpg|jpeg|png|gif|webp)$/i.test(url);
+            } catch {
+                return false;
+            }
+        }
+
+        function updateImagePreviews() {
+            const container = document.getElementById('image-previews');
+            container.innerHTML = currentImages.map((image, index) => `
+                <div class="relative group image-preview">
+                    <img src="${image.src}" alt="${image.alt}" 
+                         class="w-full h-24 object-cover rounded-lg border border-gray-200">
+                    <button type="button" onclick="removeImage(${index})" 
+                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors opacity-0 group-hover:opacity-100">
+                        ×
+                    </button>
+                    <div class="absolute bottom-1 left-1 bg-black bg-opacity-50 text-white text-xs px-1 rounded">
+                        ${index + 1}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeImage(index) {
+            currentImages.splice(index, 1);
+            updateImagePreviews();
+        }
+
+        function saveGallery(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('gallery-title').value;
+            const category = document.getElementById('gallery-category').value;
+            const description = document.getElementById('gallery-description').value;
+            const featured = document.getElementById('gallery-featured').checked;
+            
+            if (currentImages.length === 0) {
+                alert('Please add at least one image to the gallery');
+                return;
+            }
+            
+            const galleryData = {
+                id: editingId || Date.now(),
+                title,
+                description,
+                category,
+                images: currentImages,
+                featured,
+                createdAt: editingId ? galleries.find(g => g.id === editingId)?.createdAt || new Date().toISOString() : new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+            
+            if (editingId) {
+                const index = galleries.findIndex(g => g.id === editingId);
+                galleries[index] = galleryData;
+            } else {
+                galleries.push(galleryData);
+            }
+            
+            saveToStorage();
+            displayGalleries();
+            closeModal();
+            showToast(editingId ? 'Gallery updated successfully!' : 'Gallery created successfully!');
+        }
+
+        function editGallery(id) {
+            const gallery = galleries.find(g => g.id === id);
+            if (gallery) {
+                openGalleryModal(gallery);
+            }
+        }
+
+        function deleteGallery(id) {
+            if (confirm('Are you sure you want to delete this gallery? This action cannot be undone.')) {
+                galleries = galleries.filter(g => g.id !== id);
+                saveToStorage();
+                displayGalleries();
+                showToast('Gallery deleted successfully!');
+            }
+        }
+
+        function saveToStorage() {
+            localStorage.setItem('galleries', JSON.stringify(galleries));
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('success-toast');
+            const messageEl = document.getElementById('toast-message');
+            messageEl.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function showExportModal() {
+            const modal = document.getElementById('export-modal');
+            const textarea = document.getElementById('export-data');
+            textarea.value = JSON.stringify(galleries, null, 2);
+            modal.classList.remove('hidden');
+        }
+
+        function closeExportModal() {
+            document.getElementById('export-modal').classList.add('hidden');
+        }
+
+        function copyExportData() {
+            const textarea = document.getElementById('export-data');
+            textarea.select();
+            document.execCommand('copy');
+            showToast('Data copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
