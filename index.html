@@ -20,91 +20,6 @@
                 }
             }
         }
-
-        // Static gallery data for the hardcoded galleries
-        const staticGalleries = {
-            'event-1': {
-                title: 'Pro Start Competition at the Chase Center',
-                description: 'Event photography at Philadelphia\'s premier venue on the riverfront',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg', alt: 'Pro Start Competition - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg', alt: 'Pro Start Competition - Photo 2' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg', alt: 'Pro Start Competition - Photo 3' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg', alt: 'Pro Start Competition - Photo 4' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg', alt: 'Pro Start Competition - Photo 5' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg', alt: 'Pro Start Competition - Photo 6' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg', alt: 'Pro Start Competition - Photo 7' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg', alt: 'Pro Start Competition - Photo 8' }
-                ]
-            },
-            'commercial-1': {
-                title: 'Through the Lens: Advertising Photography',
-                description: 'Professional commercial photography showcasing brand storytelling and visual communication',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg', alt: 'Commercial Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg', alt: 'Commercial Photography - Photo 2' }
-                ]
-            },
-            'portrait-1': {
-                title: 'Picture Perfect Branding',
-                description: 'Professional headshots and branding photography for Philadelphia businesses and professionals',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg', alt: 'Professional Headshots - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg', alt: 'Professional Headshots - Photo 2' }
-                ]
-            },
-            'event-2': {
-                title: 'Capturing Moments: Philadelphia Event Photography',
-                description: 'A glimpse into the world of Philadelphia event photography, capturing the energy and excitement of local events',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg', alt: 'Philadelphia Event Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_02.jpg', alt: 'Philadelphia Event Photography - Photo 2' }
-                ]
-            },
-            'corporate-1': {
-                title: 'Philadelphia Corporate Events',
-                description: 'Professional event photography for Philadelphia businesses, conferences, and corporate gatherings',
-                images: [
-                    { src: 'samlustig-photo/images/hero/hero_1.jpg', alt: 'Corporate Events - Photo 1' },
-                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Corporate Events - Photo 2' },
-                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Corporate Events - Photo 3' },
-                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Corporate Events - Photo 4' },
-                    { src: 'samlustig-photo/images/hero/hero_5.jpg', alt: 'Corporate Events - Photo 5' }
-                ]
-            },
-            'wedding-1': {
-                title: 'Wedding Photography',
-                description: 'Capturing your special moments with artistic elegance',
-                images: [
-                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Wedding Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Wedding Photography - Photo 2' },
-                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Wedding Photography - Photo 3' }
-                ]
-            }
-        };
-
-        function openStaticGallery(galleryKey) {
-            const gallery = staticGalleries[galleryKey];
-            if (!gallery) return;
-            
-            // Convert to the format expected by the existing modal system
-            currentGallery = {
-                id: galleryKey,
-                title: gallery.title,
-                description: gallery.description,
-                category: 'static',
-                images: gallery.images.map((img, index) => ({
-                    id: `${galleryKey}-${index}`,
-                    src: img.src,
-                    alt: img.alt,
-                    width: 1200,
-                    height: 800
-                }))
-            };
-            
-            currentImageIndex = 0;
-            showGalleryModal();
-        }
     </script>
 </head>
 <body class="bg-white">
@@ -488,5 +403,92 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Static gallery data for the hardcoded galleries
+        const staticGalleries = {
+            'event-1': {
+                title: 'Pro Start Competition at the Chase Center',
+                description: 'Event photography at Philadelphia\'s premier venue on the riverfront',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg', alt: 'Pro Start Competition - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg', alt: 'Pro Start Competition - Photo 2' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg', alt: 'Pro Start Competition - Photo 3' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg', alt: 'Pro Start Competition - Photo 4' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg', alt: 'Pro Start Competition - Photo 5' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg', alt: 'Pro Start Competition - Photo 6' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg', alt: 'Pro Start Competition - Photo 7' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg', alt: 'Pro Start Competition - Photo 8' }
+                ]
+            },
+            'commercial-1': {
+                title: 'Through the Lens: Advertising Photography',
+                description: 'Professional commercial photography showcasing brand storytelling and visual communication',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg', alt: 'Commercial Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg', alt: 'Commercial Photography - Photo 2' }
+                ]
+            },
+            'portrait-1': {
+                title: 'Picture Perfect Branding',
+                description: 'Professional headshots and branding photography for Philadelphia businesses and professionals',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg', alt: 'Professional Headshots - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg', alt: 'Professional Headshots - Photo 2' }
+                ]
+            },
+            'event-2': {
+                title: 'Capturing Moments: Philadelphia Event Photography',
+                description: 'A glimpse into the world of Philadelphia event photography, capturing the energy and excitement of local events',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg', alt: 'Philadelphia Event Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_02.jpg', alt: 'Philadelphia Event Photography - Photo 2' }
+                ]
+            },
+            'corporate-1': {
+                title: 'Philadelphia Corporate Events',
+                description: 'Professional event photography for Philadelphia businesses, conferences, and corporate gatherings',
+                images: [
+                    { src: 'samlustig-photo/images/hero/hero_1.jpg', alt: 'Corporate Events - Photo 1' },
+                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Corporate Events - Photo 2' },
+                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Corporate Events - Photo 3' },
+                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Corporate Events - Photo 4' },
+                    { src: 'samlustig-photo/images/hero/hero_5.jpg', alt: 'Corporate Events - Photo 5' }
+                ]
+            },
+            'wedding-1': {
+                title: 'Wedding Photography',
+                description: 'Capturing your special moments with artistic elegance',
+                images: [
+                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Wedding Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Wedding Photography - Photo 2' },
+                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Wedding Photography - Photo 3' }
+                ]
+            }
+        };
+
+        function openStaticGallery(galleryKey) {
+            const gallery = staticGalleries[galleryKey];
+            if (!gallery) return;
+            
+            // Convert to the format expected by the existing modal system
+            currentGallery = {
+                id: galleryKey,
+                title: gallery.title,
+                description: gallery.description,
+                category: 'static',
+                images: gallery.images.map((img, index) => ({
+                    id: `${galleryKey}-${index}`,
+                    src: img.src,
+                    alt: img.alt,
+                    width: 1200,
+                    height: 800
+                }))
+            };
+            
+            currentImageIndex = 0;
+            showGalleryModal();
+        }
+    </script>
 </body>
 </html>
