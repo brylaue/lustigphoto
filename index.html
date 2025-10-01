@@ -20,6 +20,91 @@
                 }
             }
         }
+
+        // Static gallery data for the hardcoded galleries
+        const staticGalleries = {
+            'event-1': {
+                title: 'Pro Start Competition at the Chase Center',
+                description: 'Event photography at Philadelphia\'s premier venue on the riverfront',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg', alt: 'Pro Start Competition - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg', alt: 'Pro Start Competition - Photo 2' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg', alt: 'Pro Start Competition - Photo 3' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg', alt: 'Pro Start Competition - Photo 4' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg', alt: 'Pro Start Competition - Photo 5' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg', alt: 'Pro Start Competition - Photo 6' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg', alt: 'Pro Start Competition - Photo 7' },
+                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg', alt: 'Pro Start Competition - Photo 8' }
+                ]
+            },
+            'commercial-1': {
+                title: 'Through the Lens: Advertising Photography',
+                description: 'Professional commercial photography showcasing brand storytelling and visual communication',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg', alt: 'Commercial Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg', alt: 'Commercial Photography - Photo 2' }
+                ]
+            },
+            'portrait-1': {
+                title: 'Picture Perfect Branding',
+                description: 'Professional headshots and branding photography for Philadelphia businesses and professionals',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg', alt: 'Professional Headshots - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg', alt: 'Professional Headshots - Photo 2' }
+                ]
+            },
+            'event-2': {
+                title: 'Capturing Moments: Philadelphia Event Photography',
+                description: 'A glimpse into the world of Philadelphia event photography, capturing the energy and excitement of local events',
+                images: [
+                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg', alt: 'Philadelphia Event Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_02.jpg', alt: 'Philadelphia Event Photography - Photo 2' }
+                ]
+            },
+            'corporate-1': {
+                title: 'Philadelphia Corporate Events',
+                description: 'Professional event photography for Philadelphia businesses, conferences, and corporate gatherings',
+                images: [
+                    { src: 'samlustig-photo/images/hero/hero_1.jpg', alt: 'Corporate Events - Photo 1' },
+                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Corporate Events - Photo 2' },
+                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Corporate Events - Photo 3' },
+                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Corporate Events - Photo 4' },
+                    { src: 'samlustig-photo/images/hero/hero_5.jpg', alt: 'Corporate Events - Photo 5' }
+                ]
+            },
+            'wedding-1': {
+                title: 'Wedding Photography',
+                description: 'Capturing your special moments with artistic elegance',
+                images: [
+                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Wedding Photography - Photo 1' },
+                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Wedding Photography - Photo 2' },
+                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Wedding Photography - Photo 3' }
+                ]
+            }
+        };
+
+        function openStaticGallery(galleryKey) {
+            const gallery = staticGalleries[galleryKey];
+            if (!gallery) return;
+            
+            // Convert to the format expected by the existing modal system
+            currentGallery = {
+                id: galleryKey,
+                title: gallery.title,
+                description: gallery.description,
+                category: 'static',
+                images: gallery.images.map((img, index) => ({
+                    id: `${galleryKey}-${index}`,
+                    src: img.src,
+                    alt: img.alt,
+                    width: 1200,
+                    height: 800
+                }))
+            };
+            
+            currentImageIndex = 0;
+            showGalleryModal();
+        }
     </script>
 </head>
 <body class="bg-white">
@@ -93,75 +178,165 @@
             
             <!-- Static Gallery -->
             <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('event-1')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg" 
                              alt="Pro Start Competition Event Photography" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">8 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Pro Start Competition</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Pro Start Competition</h3>
                         <p class="mt-2 text-gray-600">Event photography at Philadelphia's premier venue</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
                 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('commercial-1')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg" 
                              alt="Commercial Photography" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">2 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Commercial Photography</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Commercial Photography</h3>
                         <p class="mt-2 text-gray-600">Professional advertising and brand photography</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
                 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('portrait-1')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg" 
                              alt="Professional Headshots" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">2 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Professional Headshots</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Professional Headshots</h3>
                         <p class="mt-2 text-gray-600">Executive and professional headshots for Philadelphia businesses</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('event-2')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg" 
                              alt="Philadelphia Event Photography" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">2 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Capturing Moments</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Capturing Moments</h3>
                         <p class="mt-2 text-gray-600">Philadelphia event photography showcasing energy and excitement</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('corporate-1')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/hero/hero_1.jpg" 
                              alt="Corporate Event Photography" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">5 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Corporate Events</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Corporate Events</h3>
                         <p class="mt-2 text-gray-600">Professional photography for Philadelphia businesses and conferences</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100">
+                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('wedding-1')">
                     <div class="aspect-[16/10] w-full overflow-hidden">
                         <img src="samlustig-photo/images/hero/hero_2.jpg" 
                              alt="Wedding Photography" 
                              class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <div class="flex items-center space-x-2 text-white">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                <span class="text-sm font-medium">3 photos</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Wedding Photography</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Wedding Photography</h3>
                         <p class="mt-2 text-gray-600">Capturing your special moments with artistic elegance</p>
+                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
+                            View Gallery
+                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
+                            </svg>
+                        </div>
                     </div>
                 </article>
             </div>
