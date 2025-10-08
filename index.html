@@ -6,21 +6,7 @@
     <title>Philadelphia Event Photography & Headshots | Sam Lustig Photo</title>
     <meta name="description" content="Professional event photography and headshot services in Philadelphia, PA. Specializing in corporate events, weddings, and professional portraits throughout the Greater Philadelphia Area.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'blue': {
-                            400: '#60a5fa',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-white">
     <!-- Header -->
@@ -63,7 +49,7 @@
                     <span class="block text-blue-400">Event Photographer</span>
                 </h1>
                 <p class="mt-6 text-lg leading-8 text-gray-300">
-                    Professional event photography and headshot services throughout the Greater Philadelphia Area. 
+                    Professional event photography and headshot services throughout the Greater Philadelphia Area.
                     Specializing in corporate events, weddings, and professional portraits that capture your most important moments.
                 </p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
@@ -90,170 +76,9 @@
                     Discover my recent work throughout the Greater Philadelphia Area, from corporate events to intimate weddings.
                 </p>
             </div>
-            
-            <!-- Static Gallery -->
-            <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('event-1')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg" 
-                             alt="Pro Start Competition Event Photography" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">8 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Pro Start Competition</h3>
-                        <p class="mt-2 text-gray-600">Event photography at Philadelphia's premier venue</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('commercial-1')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg" 
-                             alt="Commercial Photography" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">2 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Commercial Photography</h3>
-                        <p class="mt-2 text-gray-600">Professional advertising and brand photography</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('portrait-1')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg" 
-                             alt="Professional Headshots" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">2 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Professional Headshots</h3>
-                        <p class="mt-2 text-gray-600">Executive and professional headshots for Philadelphia businesses</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
 
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('event-2')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg" 
-                             alt="Philadelphia Event Photography" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">2 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Capturing Moments</h3>
-                        <p class="mt-2 text-gray-600">Philadelphia event photography showcasing energy and excitement</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('corporate-1')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/hero/hero_1.jpg" 
-                             alt="Corporate Event Photography" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">5 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Corporate Events</h3>
-                        <p class="mt-2 text-gray-600">Professional photography for Philadelphia businesses and conferences</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl" onclick="openStaticGallery('wedding-1')">
-                    <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="samlustig-photo/images/hero/hero_2.jpg" 
-                             alt="Wedding Photography" 
-                             class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div class="flex items-center space-x-2 text-white">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                <span class="text-sm font-medium">3 photos</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Wedding Photography</h3>
-                        <p class="mt-2 text-gray-600">Capturing your special moments with artistic elegance</p>
-                        <div class="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-500 transition-colors">
-                            View Gallery
-                            <svg class="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7l7 7-7 7"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
+            <div id="galleries-container" class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                <!-- Galleries will be loaded here -->
             </div>
         </div>
     </section>
@@ -278,24 +103,6 @@
                         </dt>
                         <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
                             <p class="flex-auto">Professional event photography for Philadelphia businesses, conferences, and corporate gatherings.</p>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Full event coverage</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Candid moments</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Group photos</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Same-day previews</span>
-                                </li>
-                            </ul>
                         </dd>
                     </div>
                     <div class="flex flex-col">
@@ -307,24 +114,6 @@
                         </dt>
                         <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
                             <p class="flex-auto">Executive and professional headshots for Philadelphia professionals and businesses.</p>
-                            <ul class="mt-4 space-y-2">
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Studio or location</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Multiple outfit changes</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Professional editing</span>
-                                </li>
-                                <li class="flex items-center gap-x-2">
-                                    <div class="h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                                    <span class="text-sm">Digital delivery</span>
-                                </li>
-                            </ul>
                         </dd>
                     </div>
                 </dl>
@@ -351,12 +140,6 @@
                     </div>
                     <div class="flex items-center space-x-3">
                         <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                        </svg>
-                        <span class="text-gray-900">(215) 555-0123</span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <svg class="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                         </svg>
@@ -372,34 +155,11 @@
         <div class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
             <div class="flex justify-center space-x-6 md:order-2">
                 <div class="flex items-center space-x-2 text-gray-600">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
                     <span>contact@samlustigphoto.com</span>
-                </div>
-                <div class="flex items-center space-x-2 text-gray-600">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                    </svg>
-                    <span>(215) 555-0123</span>
-                </div>
-                <div class="flex items-center space-x-2 text-gray-600">
-                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span>Philadelphia, PA</span>
                 </div>
             </div>
             <div class="mt-8 md:order-1 md:mt-0">
-                <div class="flex items-center justify-center space-x-2">
-                    <svg class="h-6 w-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span class="text-lg font-bold text-gray-900">Sam Lustig Photography</span>
-                </div>
-                <p class="mt-2 text-center text-sm text-gray-500">© 2025 Sam Lustig Photography. All rights reserved.</p>
+                <p class="text-center text-sm text-gray-500">© 2025 Sam Lustig Photography. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -412,232 +172,153 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
-            <div id="modal-content" class="bg-white rounded-lg overflow-hidden">
-                <!-- Modal content will be loaded here -->
-            </div>
+            <div id="modal-content" class="bg-white rounded-lg overflow-hidden"></div>
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        const { createClient } = supabase;
+        const supabaseUrl = 'https://jgjvwzztgoyzsxwzeyaf.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnanZ3enp0Z295enN4d3pleWFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MTU2OTEsImV4cCI6MjA3NTQ5MTY5MX0.-XNJUk1ygVlzRVM4ukK4ye2liw7r6uqLNosn9l-Dd0E';
+        const sb = createClient(supabaseUrl, supabaseKey);
+
+        let galleries = [];
         let currentGallery = null;
         let currentImageIndex = 0;
 
-        // Static gallery data for the hardcoded galleries
-        const staticGalleries = {
-            'event-1': {
-                title: 'Pro Start Competition at the Chase Center',
-                description: 'Event photography at Philadelphia\'s premier venue on the riverfront',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_01.jpg', alt: 'Pro Start Competition - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_02.jpg', alt: 'Pro Start Competition - Photo 2' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_03.jpg', alt: 'Pro Start Competition - Photo 3' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_04.jpg', alt: 'Pro Start Competition - Photo 4' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_05.jpg', alt: 'Pro Start Competition - Photo 5' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_06.jpg', alt: 'Pro Start Competition - Photo 6' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_07.jpg', alt: 'Pro Start Competition - Photo 7' },
-                    { src: 'samlustig-photo/images/galleries/event/pro-start-competition-at-the-chase-center-on-the-riverfront---event-photography_08.jpg', alt: 'Pro Start Competition - Photo 8' }
-                ]
-            },
-            'commercial-1': {
-                title: 'Through the Lens: Advertising Photography',
-                description: 'Professional commercial photography showcasing brand storytelling and visual communication',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_01.jpg', alt: 'Commercial Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/commercial/through-the-lens-unveiling-the-intricacies-of-advertising-photography_02.jpg', alt: 'Commercial Photography - Photo 2' }
-                ]
-            },
-            'portrait-1': {
-                title: 'Picture Perfect Branding',
-                description: 'Professional headshots and branding photography for Philadelphia businesses and professionals',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_01.jpg', alt: 'Professional Headshots - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/portrait/picture-perfect-branding-the-profound-power-of-professional-photography_02.jpg', alt: 'Professional Headshots - Photo 2' }
-                ]
-            },
-            'event-2': {
-                title: 'Capturing Moments: Philadelphia Event Photography',
-                description: 'A glimpse into the world of Philadelphia event photography, capturing the energy and excitement of local events',
-                images: [
-                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_01.jpg', alt: 'Philadelphia Event Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/galleries/event/capturing-moments-a-glimpse-into-the-world-of-philadelphia-event-photography_02.jpg', alt: 'Philadelphia Event Photography - Photo 2' }
-                ]
-            },
-            'corporate-1': {
-                title: 'Philadelphia Corporate Events',
-                description: 'Professional event photography for Philadelphia businesses, conferences, and corporate gatherings',
-                images: [
-                    { src: 'samlustig-photo/images/hero/hero_1.jpg', alt: 'Corporate Events - Photo 1' },
-                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Corporate Events - Photo 2' },
-                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Corporate Events - Photo 3' },
-                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Corporate Events - Photo 4' },
-                    { src: 'samlustig-photo/images/hero/hero_5.jpg', alt: 'Corporate Events - Photo 5' }
-                ]
-            },
-            'wedding-1': {
-                title: 'Wedding Photography',
-                description: 'Capturing your special moments with artistic elegance',
-                images: [
-                    { src: 'samlustig-photo/images/hero/hero_2.jpg', alt: 'Wedding Photography - Photo 1' },
-                    { src: 'samlustig-photo/images/hero/hero_3.jpg', alt: 'Wedding Photography - Photo 2' },
-                    { src: 'samlustig-photo/images/hero/hero_4.jpg', alt: 'Wedding Photography - Photo 3' }
-                ]
-            }
-        };
+        async function loadGalleries() {
+            const { data, error } = await sb.from('galleries').select('*').eq('featured', true).limit(6);
 
-        function openStaticGallery(galleryKey) {
-            const gallery = staticGalleries[galleryKey];
-            if (!gallery) return;
-            
-            // Convert to the format expected by the existing modal system
-            currentGallery = {
-                id: galleryKey,
-                title: gallery.title,
-                description: gallery.description,
-                category: 'static',
-                images: gallery.images.map((img, index) => ({
-                    id: `${galleryKey}-${index}`,
-                    src: img.src,
-                    alt: img.alt,
-                    width: 1200,
-                    height: 800
-                }))
-            };
-            
-            currentImageIndex = 0;
-            showGalleryModal();
+            if (error || !data || data.length === 0) {
+                const response = await fetch('./galleries.json');
+                galleries = await response.json();
+                galleries = galleries.filter(g => g.featured).slice(0, 6);
+            } else {
+                galleries = data;
+            }
+
+            displayGalleries();
         }
 
-        function showGalleryModal() {
+        function displayGalleries() {
+            const container = document.getElementById('galleries-container');
+            container.textContent = '';
+
+            if (galleries.length === 0) {
+                const emptyMsg = document.createElement('div');
+                emptyMsg.className = 'col-span-3 text-center text-gray-500 py-12';
+                emptyMsg.textContent = 'No galleries available.';
+                container.appendChild(emptyMsg);
+                return;
+            }
+
+            galleries.forEach(gallery => {
+                const card = createGalleryCard(gallery);
+                container.appendChild(card);
+            });
+        }
+
+        function createGalleryCard(gallery) {
+            const article = document.createElement('article');
+            article.className = 'group relative overflow-hidden rounded-2xl bg-gray-100 cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl';
+            article.onclick = () => openGallery(gallery);
+
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'aspect-[16/10] w-full overflow-hidden';
+
+            const img = document.createElement('img');
+            img.src = gallery.images?.[0]?.src || '';
+            img.alt = gallery.images?.[0]?.alt || gallery.title;
+            img.className = 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105';
+            img.onerror = () => { img.style.display = 'none'; };
+
+            const overlay = document.createElement('div');
+            overlay.className = 'absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center';
+            overlay.innerHTML = `<div class="flex items-center space-x-2 text-white"><span class="text-sm font-medium">${gallery.images?.length || 0} photos</span></div>`;
+
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(overlay);
+
+            const content = document.createElement('div');
+            content.className = 'p-6';
+
+            const title = document.createElement('h3');
+            title.className = 'text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors';
+            title.textContent = gallery.title;
+
+            const description = document.createElement('p');
+            description.className = 'mt-2 text-gray-600';
+            description.textContent = gallery.description || '';
+
+            content.appendChild(title);
+            content.appendChild(description);
+            article.appendChild(imgContainer);
+            article.appendChild(content);
+
+            return article;
+        }
+
+        function openGallery(gallery) {
+            currentGallery = gallery;
+            currentImageIndex = 0;
+            showModal();
+        }
+
+        function showModal() {
             const modal = document.getElementById('gallery-modal');
-            const modalContent = document.getElementById('modal-content');
-            
-            if (!currentGallery || !modal || !modalContent) return;
+            const content = document.getElementById('modal-content');
+            content.textContent = '';
 
-            modalContent.innerHTML = `
-                <div class="p-6 border-b border-gray-200">
-                    <h2 class="text-2xl font-bold text-gray-900">${currentGallery.title}</h2>
-                    <p class="text-gray-600 mt-2">${currentGallery.description || ''}</p>
-                    <div class="mt-2 text-sm text-gray-500">
-                        <span class="capitalize">${currentGallery.category}</span> • ${currentGallery.images.length} photos
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="aspect-[4/3] bg-gray-100 flex items-center justify-center">
-                        <img id="modal-image" 
-                             src="${currentGallery.images[currentImageIndex]?.src}" 
-                             alt="${currentGallery.images[currentImageIndex]?.alt}" 
-                             class="max-w-full max-h-full object-contain"
-                             onerror="this.src='/images/placeholder.jpg'">
-                    </div>
-                    ${currentGallery.images.length > 1 ? `
-                        <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                            </svg>
-                        </button>
-                        <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-all">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </button>
-                    ` : ''}
-                </div>
-                ${currentGallery.images.length > 1 ? `
-                    <div class="p-4 bg-gray-50">
-                        <div class="flex items-center justify-center space-x-2 text-sm text-gray-600">
-                            <span>${currentImageIndex + 1} of ${currentGallery.images.length}</span>
-                        </div>
-                        <div class="mt-4 grid grid-cols-6 gap-2 max-h-32 overflow-y-auto">
-                            ${currentGallery.images.map((img, index) => `
-                                <img src="${img.src}" 
-                                     alt="${img.alt}" 
-                                     class="w-full h-16 object-cover rounded cursor-pointer transition-all ${index === currentImageIndex ? 'ring-2 ring-blue-500' : 'hover:opacity-75'}"
-                                     onclick="selectImage(${index})"
-                                     onerror="this.src='/images/placeholder.jpg'">
-                            `).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-            `;
+            const header = document.createElement('div');
+            header.className = 'p-6 border-b border-gray-200';
 
-            // Add event listeners for navigation
-            const prevBtn = document.getElementById('prev-image');
-            const nextBtn = document.getElementById('next-image');
-            
-            if (prevBtn) prevBtn.addEventListener('click', () => navigateImage(-1));
-            if (nextBtn) nextBtn.addEventListener('click', () => navigateImage(1));
+            const title = document.createElement('h2');
+            title.className = 'text-2xl font-bold text-gray-900';
+            title.textContent = currentGallery.title;
+
+            const desc = document.createElement('p');
+            desc.className = 'text-gray-600 mt-2';
+            desc.textContent = currentGallery.description || '';
+
+            header.appendChild(title);
+            header.appendChild(desc);
+
+            const imgContainer = document.createElement('div');
+            imgContainer.className = 'relative';
+
+            const imgWrapper = document.createElement('div');
+            imgWrapper.className = 'aspect-[4/3] bg-gray-100 flex items-center justify-center';
+
+            const img = document.createElement('img');
+            img.id = 'modal-image';
+            img.src = currentGallery.images[currentImageIndex]?.src || '';
+            img.alt = currentGallery.images[currentImageIndex]?.alt || '';
+            img.className = 'max-w-full max-h-full object-contain';
+
+            imgWrapper.appendChild(img);
+            imgContainer.appendChild(imgWrapper);
+
+            content.appendChild(header);
+            content.appendChild(imgContainer);
 
             modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function selectImage(index) {
-            currentImageIndex = index;
-            const modalImage = document.getElementById('modal-image');
-            if (modalImage && currentGallery) {
-                modalImage.src = currentGallery.images[index].src;
-                modalImage.alt = currentGallery.images[index].alt;
-                
-                // Update thumbnail selection
-                document.querySelectorAll('#modal-content img').forEach((img, i) => {
-                    if (i === index + 1) { // +1 because first img is the main image
-                        img.classList.add('ring-2', 'ring-blue-500');
-                    } else {
-                        img.classList.remove('ring-2', 'ring-blue-500');
-                    }
-                });
-                
-                // Update counter
-                const counter = document.querySelector('#modal-content .text-sm.text-gray-600 span');
-                if (counter) {
-                    counter.textContent = `${index + 1} of ${currentGallery.images.length}`;
-                }
-            }
-        }
-
-        function navigateImage(direction) {
-            if (!currentGallery) return;
-            
-            currentImageIndex += direction;
-            if (currentImageIndex < 0) currentImageIndex = currentGallery.images.length - 1;
-            if (currentImageIndex >= currentGallery.images.length) currentImageIndex = 0;
-            
-            selectImage(currentImageIndex);
         }
 
         function closeModal() {
-            const modal = document.getElementById('gallery-modal');
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
+            document.getElementById('gallery-modal').classList.add('hidden');
             currentGallery = null;
-            currentImageIndex = 0;
         }
 
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('close-modal').addEventListener('click', closeModal);
-            
-            document.getElementById('gallery-modal').addEventListener('click', function(e) {
-                if (e.target === this) closeModal();
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', function(e) {
-                if (!currentGallery) return;
-                
-                switch(e.key) {
-                    case 'Escape':
-                        closeModal();
-                        break;
-                    case 'ArrowLeft':
-                        navigateImage(-1);
-                        break;
-                    case 'ArrowRight':
-                        navigateImage(1);
-                        break;
-                }
-            });
+        document.getElementById('close-modal').addEventListener('click', closeModal);
+        document.getElementById('gallery-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'gallery-modal') closeModal();
         });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && currentGallery) closeModal();
+        });
+
+        loadGalleries();
     </script>
 </body>
 </html>
