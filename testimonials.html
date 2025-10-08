@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | Sam Lustig Photography</title>
+    <meta name="description" content="Read what clients say about Sam Lustig Photography's event photography and headshot services in Philadelphia.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        img {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+        }
+        img::selection {
+            background: transparent;
+        }
+        .carousel-transition {
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-white" oncontextmenu="return false;">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
+            <div class="flex lg:flex-1">
+                <a href="/" class="-m-1.5 p-1.5 flex items-center space-x-2">
+                    <svg class="h-8 w-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-900">Sam Lustig</span>
+                </a>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                <a href="/" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600">Home</a>
+                <a href="/#portfolio" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600">Portfolio</a>
+                <a href="/bio.html" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600">About</a>
+                <a href="/#services" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600">Services</a>
+                <a href="/testimonials.html" class="text-sm font-semibold leading-6 text-blue-600">Testimonials</a>
+                <a href="/#contact" class="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-600">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="py-24 sm:py-32 bg-gradient-to-br from-gray-50 to-white">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl text-center mb-16">
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+                    Client Testimonials
+                </h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">
+                    Hear what clients say about working with Sam Lustig Photography
+                </p>
+            </div>
+
+            <div class="relative mx-auto max-w-4xl">
+                <div id="carousel-container" class="relative min-h-[400px] bg-white rounded-2xl shadow-xl p-8 sm:p-12">
+                    <div id="testimonial-content" class="carousel-transition">
+                    </div>
+
+                    <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110">
+                        <svg class="h-6 w-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+
+                    <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110">
+                        <svg class="h-6 w-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="indicators" class="flex justify-center gap-2 mt-8">
+                </div>
+
+                <div id="empty-state" class="hidden text-center py-12">
+                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                    <p class="mt-4 text-gray-600">No testimonials available yet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const SUPABASE_URL = 'https://jgjvwzztgoyzsxwzeyaf.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnanZ3enp0Z295enN4d3pleWFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg5NDUyODUsImV4cCI6MjA1NDUyMTI4NX0.zT0mDfzXAL2qBLMXNL9lx2MJuVCwcuqmojPqWcFAT0U';
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let testimonials = [];
+        let currentIndex = 0;
+
+        async function loadTestimonials() {
+            const { data, error } = await sb
+                .from('testimonials')
+                .select('*')
+                .eq('is_published', true)
+                .order('display_order', { ascending: true });
+
+            if (error) {
+                console.error('Error loading testimonials:', error);
+                showEmptyState();
+                return;
+            }
+
+            testimonials = data || [];
+
+            if (testimonials.length === 0) {
+                showEmptyState();
+                return;
+            }
+
+            renderCarousel();
+            setupControls();
+            startAutoPlay();
+        }
+
+        function showEmptyState() {
+            document.getElementById('carousel-container').classList.add('hidden');
+            document.getElementById('empty-state').classList.remove('hidden');
+        }
+
+        function renderCarousel() {
+            renderTestimonial(currentIndex);
+            renderIndicators();
+        }
+
+        function renderTestimonial(index) {
+            const testimonial = testimonials[index];
+            const content = document.getElementById('testimonial-content');
+
+            content.style.opacity = '0';
+
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="flex flex-col items-center text-center">
+                        ${testimonial.photo_url ? `
+                            <img src="${testimonial.photo_url}" alt="${testimonial.client_name}"
+                                 class="w-20 h-20 rounded-full object-cover mb-6 border-4 border-blue-100"
+                                 draggable="false" oncontextmenu="return false;">
+                        ` : `
+                            <div class="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mb-6">
+                                <span class="text-2xl font-bold text-blue-600">${testimonial.client_name.charAt(0)}</span>
+                            </div>
+                        `}
+
+                        <svg class="h-8 w-8 text-blue-600 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                        </svg>
+
+                        <blockquote class="text-xl text-gray-900 leading-relaxed mb-6 max-w-3xl">
+                            "${testimonial.testimonial_text}"
+                        </blockquote>
+
+                        ${testimonial.rating ? `
+                            <div class="flex gap-1 mb-4">
+                                ${Array(testimonial.rating).fill('').map(() => `
+                                    <svg class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        <div>
+                            <p class="font-semibold text-gray-900 text-lg">${testimonial.client_name}</p>
+                            ${testimonial.client_title || testimonial.company ? `
+                                <p class="text-gray-600">
+                                    ${[testimonial.client_title, testimonial.company].filter(Boolean).join(' • ')}
+                                </p>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    content.style.opacity = '1';
+                }, 50);
+            }, 500);
+        }
+
+        function renderIndicators() {
+            const indicators = document.getElementById('indicators');
+            indicators.innerHTML = '';
+
+            testimonials.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = `h-3 w-3 rounded-full transition-all duration-300 ${
+                    index === currentIndex ? 'bg-blue-600 w-8' : 'bg-gray-300 hover:bg-gray-400'
+                }`;
+                dot.onclick = () => goToSlide(index);
+                indicators.appendChild(dot);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            renderCarousel();
+            resetAutoPlay();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % testimonials.length;
+            renderCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+            renderCarousel();
+        }
+
+        function setupControls() {
+            document.getElementById('next-btn').addEventListener('click', () => {
+                nextSlide();
+                resetAutoPlay();
+            });
+
+            document.getElementById('prev-btn').addEventListener('click', () => {
+                prevSlide();
+                resetAutoPlay();
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetAutoPlay();
+                }
+            });
+        }
+
+        let autoPlayInterval;
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, 5000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+            }
+        });
+
+        loadTestimonials();
+    </script>
+</body>
+</html>
