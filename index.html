@@ -7,8 +7,20 @@
     <meta name="description" content="Professional event photography and headshot services in Philadelphia, PA. Specializing in corporate events, weddings, and professional portraits throughout the Greater Philadelphia Area.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        img {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none;
+        }
+        img::selection {
+            background: transparent;
+        }
+    </style>
 </head>
-<body class="bg-white">
+<body class="bg-white" oncontextmenu="return false;">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -230,6 +242,8 @@
             img.src = gallery.images?.[0]?.src || '';
             img.alt = gallery.images?.[0]?.alt || gallery.title;
             img.className = 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105';
+            img.draggable = false;
+            img.oncontextmenu = (e) => e.preventDefault();
             img.onerror = () => { img.style.display = 'none'; };
 
             const overlay = document.createElement('div');
@@ -294,6 +308,8 @@
             img.src = currentGallery.images[currentImageIndex]?.src || '';
             img.alt = currentGallery.images[currentImageIndex]?.alt || '';
             img.className = 'max-w-full max-h-full object-contain';
+            img.draggable = false;
+            img.oncontextmenu = (e) => e.preventDefault();
 
             imgWrapper.appendChild(img);
             imgContainer.appendChild(imgWrapper);
@@ -316,6 +332,12 @@
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && currentGallery) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                e.preventDefault();
+            }
         });
 
         loadGalleries();
