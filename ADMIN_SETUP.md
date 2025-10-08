@@ -1,8 +1,14 @@
 # Admin Panel Setup Guide
 
+## Admin Portal URL
+
+**Your admin portal is located at:** `/cms-a8f3e9d2.html`
+
+**⭐ Bookmark this URL!** The admin portal is intentionally hidden from search engines and sitemaps for security.
+
 ## Enable Google Sign-In for Admin Access
 
-To access the gallery admin panel at `/admin.html`, you need to configure Google OAuth in Supabase.
+To access the gallery admin panel, you need to configure Google OAuth in Supabase.
 
 ### Step 1: Get Google OAuth Credentials
 
@@ -29,7 +35,7 @@ To access the gallery admin panel at `/admin.html`, you need to configure Google
 
 ### Step 3: Add Your Google Account
 
-1. Go to your website's admin page: `https://yourdomain.com/admin.html`
+1. Go to your website's admin page: `https://yourdomain.com/cms-a8f3e9d2.html`
 2. Click **Sign in with Google**
 3. Select your Google account
 4. You'll be redirected back to the admin panel
@@ -63,7 +69,12 @@ To limit admin access to specific Google accounts:
 
 ## Security Notes
 
+- Admin portal uses an obscured URL (`cms-a8f3e9d2.html`) that won't appear in search results
+- Blocked from search engines via robots.txt
+- Not included in sitemap.xml
 - Only authenticated users can create/edit/delete galleries
 - Public visitors can view galleries without authentication
 - The database has Row Level Security (RLS) enabled
 - All admin operations are protected at the database level
+
+**Tip:** Create a browser bookmark for easy access!
